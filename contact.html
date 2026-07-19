@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Booking - VP Beauty Aesthetics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">VP Beauty Aesthetics</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
+                <li><a href="facial-rejuvenations.html">Facial Rejuvenations</a></li>
+                <li><a href="massages.html">Massages</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact & Booking</h1>
+            <p>Get in touch with VP Beauty Aesthetics Place</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="info-box">
+                        <h3>📍 Address</h3>
+                        <p>940 E 163rd Street</p>
+                        <p>Bronx, NY 10459</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>📞 Phone</h3>
+                        <p><a href="tel:646-735-1099">(646) 735-1099</a></p>
+                        <p class="small-text">Call to book your appointment today!</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>⏰ Hours of Operation</h3>
+                        <p><strong>Monday - Friday:</strong> 10:00 AM - 8:00 PM</p>
+                        <p><strong>Saturday - Sunday:</strong> 10:00 AM - 6:00 PM</p>
+                        <p class="small-text">By Appointment Only</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>✨ Special Offer</h3>
+                        <p class="offer-text">30% OFF Your First Visit</p>
+                        <p class="small-text">New clients receive this exclusive discount</p>
+                    </div>
+
+                    <div class="info-box guarantee">
+                        <h3>✓ Our Guarantee</h3>
+                        <p>100% Satisfaction Guaranteed</p>
+                        <p class="small-text">We stand behind every service with our complete satisfaction guarantee</p>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="booking-form-container">
+                    <h2>Quick Booking</h2>
+                    <form class="booking-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Service Interested In *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a Service</option>
+                                <optgroup label="Facial Cleaning">
+                                    <option>Cleaning + Vitamin Crashes (Dehydration)</option>
+                                    <option>Cleaning + Micro-Dermabrasion + Caviar Mask</option>
+                                    <option>Cleaning + Peeling Chemistry Desaminant</option>
+                                    <option>Cleaning + Enzymatic Peeling</option>
+                                    <option>Cleaning + Glycolic Peeling 3%</option>
+                                    <option>Cleaning + Professional Makeup</option>
+                                </optgroup>
+                                <optgroup label="Facial Rejuvenations">
+                                    <option>Nasolabial Fillers (Hyaluronic Acid)</option>
+                                    <option>Facelift with Demae Stretch</option>
+                                    <option>Baby Face Expression Line Remover</option>
+                                    <option>PRP Platelet</option>
+                                    <option>Toxin Rich Plasma Botulinum (Botox)</option>
+                                    <option>Bipolarized Radiofrequency</option>
+                                    <option>Cavitation Biostimulation</option>
+                                    <option>Facial Chocolate Therapy</option>
+                                </optgroup>
+                                <optgroup label="Massages & Body Treatments">
+                                    <option>Hot Stone Massages</option>
+                                    <option>Ultracavitation Body</option>
+                                    <option>Wood Massage</option>
+                                    <option>Body Mesotherapy</option>
+                                    <option>Reducing Massages</option>
+                                    <option>Mesotherapy Injections (ALIDYA)</option>
+                                    <option>Postoperative Massages</option>
+                                    <option>Waxing Services</option>
+                                    <option>Collageno Applied and More</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message or Special Requests</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your skincare goals or any special needs..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Request Appointment</button>
+                        <p class="form-note">* Required fields. We'll contact you shortly to confirm your appointment.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Visit Us</h2>
+            <p>Located in the Heart of the Bronx</p>
+            <!-- Embed Google Map -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.1234567890!2d-73.9252!3d40.8207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f3e7e7e7e7e7%3A0x1234567890abcdef!2s940%20E%20163rd%20St%2C%20Bronx%2C%20NY%2010459!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>940 E 163rd Street</p>
+                    <p>Bronx, NY 10459</p>
+                    <p>📞 (646) 735-1099</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Hours</h4>
+                    <p>Mon - Fri: 10AM - 8PM</p>
+                    <p>Sat - Sun: 10AM - 6PM</p>
+                    <p>By Appointment Only</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
+                        <li><a href="facial-rejuvenations.html">Facial Rejuvenations</a></li>
+                        <li><a href="massages.html">Massages</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 VP Beauty Aesthetics Place. All rights reserved.</p>
+                <p>100% Satisfaction Guaranteed ✓</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Handle form submission
+        document.querySelector('.booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! We will contact you shortly to confirm your appointment.\n\nOr call us directly at (646) 735-1099');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

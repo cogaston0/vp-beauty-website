@@ -1,0 +1,33 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Dependencies (if you add them later)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build files
+dist/
+build/
+
+# Local development
+*.local
+.env
+.env.local
+
+# Image cache/thumbnails
+.thumbnails/
+
+# Backup files
+*.bak
+*.backup
