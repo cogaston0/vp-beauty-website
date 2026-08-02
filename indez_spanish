@@ -3,61 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lugar de Estética de Belleza VP - Servicios Profesionales de Faciales y Spa</title>
+    <title data-es="Lugar de Estética de Belleza VP - Servicios Profesionales de Faciales y Spa" data-en="VP Beauty Aesthetics Place - Professional Facial &amp; Spa Services">Lugar de Estética de Belleza VP - Servicios Profesionales de Faciales y Spa</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">Lugar de Estética de Belleza VP</div>
+            <div class="logo" data-es="Lugar de Estética de Belleza VP" data-en="VP Beauty Aesthetics">Lugar de Estética de Belleza VP</div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="facial-cleaning.html">Limpieza Facial</a></li>
-                <li><a href="facial-rejuvenations.html">Rejuvenecimiento Facial</a></li>
-                <li><a href="massages.html">Masajes</a></li>
-                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="indez_spanish" class="active" data-es="Inicio" data-en="Home">Inicio</a></li>
+                <li><a href="facial-cleaning.html" data-es="Limpieza Facial" data-en="Facial Cleaning">Limpieza Facial</a></li>
+                <li><a href="facial-rejuvenations.html" data-es="Rejuvenecimiento Facial" data-en="Facial Rejuvenations">Rejuvenecimiento Facial</a></li>
+                <li><a href="massages.html" data-es="Masajes" data-en="Massages">Masajes</a></li>
+                <li><a href="contact.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
             </ul>
+            <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">EN</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Lugar de Estética de Belleza VP</h1>
-            <p>Servicios Profesionales de Faciales y Spa en el Bronx</p>
+            <h1 data-es="Lugar de Estética de Belleza VP" data-en="VP Beauty Aesthetics Place">Lugar de Estética de Belleza VP</h1>
+            <p data-es="Servicios Profesionales de Faciales y Spa en el Bronx" data-en="Professional Facial &amp; Spa Services in the Bronx">Servicios Profesionales de Faciales y Spa en el Bronx</p>
             <p class="address">909 E 156 St, Bronx, NY 10455</p>
             <p class="phone">📞 (646) 735-1099</p>
-            <a href="contact.html" class="cta-button">Reserva tu Cita</a>
+            <a href="contact.html" class="cta-button" data-es="Reserva tu Cita" data-en="Book an Appointment">Reserva tu Cita</a>
         </div>
     </section>
 
     <!-- Services Overview -->
     <section class="services-overview">
         <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <p class="intro-text">Explora nuestra amplia gama de tratamientos profesionales de belleza y bienestar</p>
+            <h2 data-es="Nuestros Servicios" data-en="Our Services">Nuestros Servicios</h2>
+            <p class="intro-text" data-es="Explora nuestra amplia gama de tratamientos profesionales de belleza y bienestar" data-en="Explore our comprehensive range of professional beauty and wellness treatments">Explora nuestra amplia gama de tratamientos profesionales de belleza y bienestar</p>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">💆</div>
-                    <h3>Limpieza Facial</h3>
-                    <p>Tratamientos avanzados de limpieza con infusiones de vitaminas, terapias de peeling y aplicación profesional de maquillaje</p>
-                    <a href="facial-cleaning.html" class="service-link">Ver Servicios →</a>
+                    <h3 data-es="Limpieza Facial" data-en="Facial Cleaning">Limpieza Facial</h3>
+                    <p data-es="Tratamientos avanzados de limpieza con infusiones de vitaminas, terapias de peeling y aplicación profesional de maquillaje" data-en="Advanced cleansing treatments with vitamin infusions, peeling therapies, and professional makeup application">Tratamientos avanzados de limpieza con infusiones de vitaminas, terapias de peeling y aplicación profesional de maquillaje</p>
+                    <a href="facial-cleaning.html" class="service-link" data-es="Ver Servicios →" data-en="View Services →">Ver Servicios →</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">✨</div>
-                    <h3>Rejuvenecimiento Facial</h3>
-                    <p>Tratamientos premium anti-envejecimiento incluyendo rellenos, radiofrecuencia, terapia PRP y terapias especializadas de piel</p>
-                    <a href="facial-rejuvenations.html" class="service-link">Ver Servicios →</a>
+                    <h3 data-es="Rejuvenecimiento Facial" data-en="Facial Rejuvenations">Rejuvenecimiento Facial</h3>
+                    <p data-es="Tratamientos premium anti-envejecimiento incluyendo rellenos, radiofrecuencia, terapia PRP y terapias especializadas de piel" data-en="Premium anti-aging treatments including fillers, radiofrequency, PRP therapy, and specialized skin therapies">Tratamientos premium anti-envejecimiento incluyendo rellenos, radiofrecuencia, terapia PRP y terapias especializadas de piel</p>
+                    <a href="facial-rejuvenations.html" class="service-link" data-es="Ver Servicios →" data-en="View Services →">Ver Servicios →</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">🧖</div>
-                    <h3>Masajes y Tratamientos</h3>
-                    <p>Masajes relajantes y terapéuticos, tratamientos corporales y servicios especializados de bienestar</p>
-                    <a href="massages.html" class="service-link">Ver Servicios →</a>
+                    <h3 data-es="Masajes y Tratamientos" data-en="Massages &amp; Treatments">Masajes y Tratamientos</h3>
+                    <p data-es="Masajes relajantes y terapéuticos, tratamientos corporales y servicios especializados de bienestar" data-en="Relaxing and therapeutic massages, body treatments, and specialized wellness services">Masajes relajantes y terapéuticos, tratamientos corporales y servicios especializados de bienestar</p>
+                    <a href="massages.html" class="service-link" data-es="Ver Servicios →" data-en="View Services →">Ver Servicios →</a>
                 </div>
             </div>
         </div>
@@ -66,9 +67,9 @@
     <!-- Special Offer -->
     <section class="special-offer">
         <div class="container">
-            <h2>🎉 Oferta Especial</h2>
-            <p class="discount-text">¡Obtén 30% DE DESCUENTO en tu Primera Visita!</p>
-            <p>Reserva tu cita llamando hoy mismo</p>
+            <h2 data-es="🎉 Oferta Especial" data-en="🎉 Special Offer">🎉 Oferta Especial</h2>
+            <p class="discount-text" data-es="¡Obtén 30% DE DESCUENTO en tu Primera Visita!" data-en="Get 30% OFF on Your First Visit!">¡Obtén 30% DE DESCUENTO en tu Primera Visita!</p>
+            <p data-es="Reserva tu cita llamando hoy mismo" data-en="Book your appointment by calling us today">Reserva tu cita llamando hoy mismo</p>
         </div>
     </section>
 
@@ -77,30 +78,51 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Información de Contacto</h4>
+                    <h4 data-es="Información de Contacto" data-en="Contact Info">Información de Contacto</h4>
                     <p>909 E 156 St</p>
                     <p>Bronx, NY 10455</p>
                     <p>📞 (646) 735-1099</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Horario</h4>
-                    <p>Lun - Vie: 10AM - 8PM</p>
-                    <p>Sab - Dom: 10AM - 6PM</p>
-                    <p>Solo por Cita Previa</p>
+                    <h4 data-es="Horario" data-en="Hours">Horario</h4>
+                    <p data-es="Lun - Vie: 10AM - 8PM" data-en="Mon - Fri: 10AM - 8PM">Lun - Vie: 10AM - 8PM</p>
+                    <p data-es="Sab - Dom: 10AM - 6PM" data-en="Sat - Sun: 10AM - 6PM">Sab - Dom: 10AM - 6PM</p>
+                    <p data-es="Solo por Cita Previa" data-en="By Appointment Only">Solo por Cita Previa</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Servicios</h4>
+                    <h4 data-es="Servicios" data-en="Services">Servicios</h4>
                     <ul>
-                        <li><a href="facial-cleaning.html">Limpieza Facial</a></li>
-                        <li><a href="facial-rejuvenations.html">Rejuvenecimiento Facial</a></li>
-                        <li><a href="massages.html">Masajes</a></li>
+                        <li><a href="facial-cleaning.html" data-es="Limpieza Facial" data-en="Facial Cleaning">Limpieza Facial</a></li>
+                        <li><a href="facial-rejuvenations.html" data-es="Rejuvenecimiento Facial" data-en="Facial Rejuvenations">Rejuvenecimiento Facial</a></li>
+                        <li><a href="massages.html" data-es="Masajes" data-en="Massages">Masajes</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados.</p>
+                <p data-es="© 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados." data-en="© 2026 VP Beauty Aesthetics Place. All rights reserved.">© 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        var currentLang = 'es';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.documentElement.lang = currentLang;
+            document.getElementById('langToggle').textContent = currentLang === 'es' ? 'EN' : 'ES';
+
+            // Update document title
+            var titleEl = document.querySelector('title');
+            if (titleEl && titleEl.dataset[currentLang]) {
+                document.title = titleEl.dataset[currentLang];
+            }
+
+            // Update all translatable elements (excluding <title>)
+            document.querySelectorAll('[data-es][data-en]:not(title)').forEach(function(el) {
+                el.textContent = el.dataset[currentLang];
+            });
+        }
+    </script>
 </body>
 </html>
