@@ -3,105 +3,537 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VP Beauty Aesthetics Place - Professional Facial & Spa Services</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>VP Beauty Aesthetics Place | Professional Facial & Spa Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #9b6b9e;
+            --secondary-color: #d4998f;
+            --accent-color: #8b6f47;
+            --light-bg: #f5f1ec;
+            --dark-text: #3a3a3a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --success: #78c850;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50px;
+            padding: 8px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .lang-btn.active {
+            background: #9b6b9e;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .es { display: none; }
+        .es.active { display: block; }
+        .en { display: block; }
+        .en.hidden { display: none; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: var(--light-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Services Section */
+        .services {
+            margin-bottom: 60px;
+        }
+
+        .services h3 {
+            font-size: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card h4 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .service-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Special Offer */
+        .special-offer {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+
+        .special-offer h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .discount-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .special-offer p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">VP Beauty Aesthetics</div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
-                <li><a href="facial-rejuvenations.html">Facial Rejuvenations</a></li>
-                <li><a href="massages.html">Massages</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">🇺🇸</button>
+        <button class="lang-btn" data-lang="es">🇪🇸</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="en">
+            <h1>VP Beauty Aesthetics Place</h1>
+            <p>Professional Facial & Spa Services in the Bronx</p>
         </div>
+        <div class="es">
+            <h1>Lugar de Estética de Belleza VP</h1>
+            <p>Servicios Profesionales de Faciales y Spa en el Bronx</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home" class="en">Home</a><a href="#home" class="es">Inicio</a></li>
+            <li><a href="facial-cleaning.html" class="en">Facial Cleaning</a><a href="facial-cleaning.html" class="es">Limpieza Facial</a></li>
+            <li><a href="facial-rejuvenations.html" class="en">Facial Rejuvenations</a><a href="facial-rejuvenations.html" class="es">Rejuvenecimiento Facial</a></li>
+            <li><a href="massages.html" class="en">Massages</a><a href="massages.html" class="es">Masajes</a></li>
+            <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="es">Contacto</a></li>
+        </ul>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>VP Beauty Aesthetics Place</h1>
-            <p>Professional Facial & Spa Services in the Bronx</p>
-            <p class="address">940 E 163rd Street, Bronx, NY 10459</p>
-            <p class="phone">📞 (646) 735-1099</p>
-            <a href="contact.html" class="cta-button">Book an Appointment</a>
+    <div class="container">
+        <div class="hero">
+            <div class="en">
+                <h2>Welcome to VP Beauty Aesthetics</h2>
+                <p>Discover premium facial and spa treatments designed to rejuvenate your skin and enhance your natural beauty</p>
+                <a href="contact.html" class="cta-button">Book an Appointment</a>
+            </div>
+            <div class="es">
+                <h2>Bienvenido a Estética de Belleza VP</h2>
+                <p>Descubre tratamientos faciales y de spa premium diseñados para rejuvenecer tu piel y realzar tu belleza natural</p>
+                <a href="contact.html" class="cta-button">Reservar una Cita</a>
+            </div>
         </div>
-    </section>
 
-    <!-- Services Overview -->
-    <section class="services-overview">
-        <div class="container">
-            <h2>Our Services</h2>
-            <p class="intro-text">Explore our comprehensive range of professional beauty and wellness treatments</p>
-            
-            <div class="services-grid">
+        <!-- Services Overview -->
+        <section class="services">
+            <div class="en">
+                <h3>Our Services</h3>
+            </div>
+            <div class="es">
+                <h3>Nuestros Servicios</h3>
+            </div>
+
+            <div class="service-grid">
                 <div class="service-card">
-                    <div class="service-icon">💆</div>
-                    <h3>Facial Cleaning</h3>
-                    <p>Advanced cleansing treatments with vitamin infusions, peeling therapies, and professional makeup application</p>
-                    <a href="facial-cleaning.html" class="service-link">View Services →</a>
+                    <div class="service-icon">✨</div>
+                    <h4 class="en">Facial Cleaning</h4>
+                    <h4 class="es">Limpieza Facial</h4>
+                    <p class="en">Professional deep cleansing treatments with multiple options to suit your skin type</p>
+                    <p class="es">Tratamientos profesionales de limpieza profunda con múltiples opciones para tu tipo de piel</p>
+                    <a href="facial-cleaning.html" class="service-link">
+                        <span class="en">View Services →</span>
+                        <span class="es">Ver Servicios →</span>
+                    </a>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">✨</div>
-                    <h3>Facial Rejuvenations</h3>
-                    <p>Premium anti-aging treatments including fillers, radiofrequency, PRP therapy, and specialized skin therapies</p>
-                    <a href="facial-rejuvenations.html" class="service-link">View Services →</a>
+                    <div class="service-icon">💎</div>
+                    <h4 class="en">Facial Rejuvenations</h4>
+                    <h4 class="es">Rejuvenecimiento Facial</h4>
+                    <p class="en">Premium anti-aging treatments including fillers, radiofrequency, and PRP therapy</p>
+                    <p class="es">Tratamientos premium anti-envejecimiento incluyendo rellenos, radiofrecuencia y terapia PRP</p>
+                    <a href="facial-rejuvenations.html" class="service-link">
+                        <span class="en">View Services →</span>
+                        <span class="es">Ver Servicios →</span>
+                    </a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">🧖</div>
-                    <h3>Massages & Treatments</h3>
-                    <p>Relaxing and therapeutic massages, body treatments, and specialized wellness services</p>
-                    <a href="massages.html" class="service-link">View Services →</a>
+                    <h4 class="en">Massages & Wellness</h4>
+                    <h4 class="es">Masajes y Bienestar</h4>
+                    <p class="en">Relaxing therapeutic massages and body treatments for total wellness</p>
+                    <p class="es">Masajes terapéuticos relajantes y tratamientos corporales para el bienestar total</p>
+                    <a href="massages.html" class="service-link">
+                        <span class="en">View Services →</span>
+                        <span class="es">Ver Servicios →</span>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Special Offer -->
-    <section class="special-offer">
-        <div class="container">
-            <h2>🎉 Special Offer</h2>
-            <p class="discount-text">Get 30% OFF on Your First Visit!</p>
-            <p>Book your appointment by calling us today</p>
-        </div>
-    </section>
+        <!-- Special Offer -->
+        <section class="special-offer">
+            <div class="en">
+                <h2>🎉 Special Offer</h2>
+                <p class="discount-text">Get 30% OFF on Your First Visit!</p>
+                <p>Book your appointment today and experience the VP Beauty Aesthetics difference</p>
+            </div>
+            <div class="es">
+                <h2>🎉 Oferta Especial</h2>
+                <p class="discount-text">¡Obtén 30% de descuento en tu Primera Visita!</p>
+                <p>Reserva tu cita hoy y experimenta la diferencia de Estética de Belleza VP</p>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>940 E 163rd Street</p>
-                    <p>Bronx, NY 10459</p>
+                    <h4 class="en">Contact Info</h4>
+                    <h4 class="es">Información de Contacto</h4>
+                    <p>909 E 156 Street</p>
+                    <p>Bronx, NY 10455</p>
                     <p>📞 (646) 735-1099</p>
                 </div>
+
                 <div class="footer-section">
-                    <h4>Hours</h4>
-                    <p>Mon - Fri: 10AM - 8PM</p>
-                    <p>Sat - Sun: 10AM - 6PM</p>
-                    <p>By Appointment Only</p>
+                    <h4 class="en">Hours</h4>
+                    <h4 class="es">Horario</h4>
+                    <p class="en">Mon - Fri: 10AM - 8PM</p>
+                    <p class="es">Lun - Vie: 10AM - 8PM</p>
+                    <p class="en">Sat - Sun: 10AM - 6PM</p>
+                    <p class="es">Sáb - Dom: 10AM - 6PM</p>
+                    <p class="en">By Appointment Only</p>
+                    <p class="es">Solo por Cita</p>
                 </div>
+
                 <div class="footer-section">
-                    <h4>Services</h4>
+                    <h4 class="en">Services</h4>
+                    <h4 class="es">Servicios</h4>
                     <ul>
-                        <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
-                        <li><a href="facial-rejuvenations.html">Facial Rejuvenations</a></li>
-                        <li><a href="massages.html">Massages</a></li>
+                        <li><a href="facial-cleaning.html" class="en">Facial Cleaning</a><a href="facial-cleaning.html" class="es">Limpieza Facial</a></li>
+                        <li><a href="facial-rejuvenations.html" class="en">Facial Rejuvenations</a><a href="facial-rejuvenations.html" class="es">Rejuvenecimiento</a></li>
+                        <li><a href="massages.html" class="en">Massages</a><a href="massages.html" class="es">Masajes</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2024 VP Beauty Aesthetics Place. All rights reserved.</p>
-                <p>100% Satisfaction Guaranteed ✓</p>
+                <p class="en">&copy; 2026 VP Beauty Aesthetics Place. All rights reserved. 100% Satisfaction Guarantee ✓</p>
+                <p class="es">&copy; 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados. 100% Garantía de Satisfacción ✓</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            // Hide all
+            document.querySelectorAll('.en, .es').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('hidden');
+            });
+            
+            // Show selected
+            if (lang === 'en') {
+                document.querySelectorAll('.en').forEach(el => {
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="en"]').classList.add('active');
+                document.querySelector('[data-lang="es"]').classList.remove('active');
+            } else if (lang === 'es') {
+                document.querySelectorAll('.es').forEach(el => {
+                    el.classList.add('active');
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="es"]').classList.add('active');
+                document.querySelector('[data-lang="en"]').classList.remove('active');
+            }
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // Load saved preference
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('preferredLanguage') || 'en';
+            switchLanguage(saved);
+        });
+
+        // Button click handlers
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                switchLanguage(this.dataset.lang);
+            });
+        });
+    </script>
 </body>
 </html>

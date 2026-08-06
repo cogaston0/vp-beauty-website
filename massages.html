@@ -3,364 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Massages & Body Treatments - VP Beauty Aesthetics</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Massage & Wellness Services | Servicios de Masaje y Bienestar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #9b6b9e;
+            --secondary-color: #d4998f;
+            --accent-color: #8b6f47;
+            --light-bg: #f5f1ec;
+            --dark-text: #3a3a3a;
+            --light-text: #666666;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50px;
+            padding: 8px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .lang-btn.active {
+            background: #9b6b9e;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .es { display: none; }
+        .es.active { display: block; }
+        .en { display: block; }
+        .en.hidden { display: none; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        header a:hover {
+            opacity: 1;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .service-details {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .service-details strong {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(155, 107, 158, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">VP Beauty Aesthetics</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
-                <li><a href="facial-rejuvenations.html">Facial Rejuvenations</a></li>
-                <li><a href="massages.html" class="active">Massages</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">🇺🇸</button>
+        <button class="lang-btn" data-lang="es">🇪🇸</button>
+    </div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Massages & Body Treatments</h1>
-            <p>Relaxing and therapeutic wellness services for your entire body</p>
+    <!-- Header -->
+    <header>
+        <div class="en">
+            <h1>VP Beauty Aesthetics Place</h1>
+            <p><a href="index.html">← Back to Home</a></p>
         </div>
-    </section>
+        <div class="es">
+            <h1>Lugar de Estética de Belleza VP</h1>
+            <p><a href="index.html">← Volver al Inicio</a></p>
+        </div>
+    </header>
 
-    <!-- Services -->
-    <section class="services-section">
-        <div class="container">
+    <div class="container">
+        <!-- Page Title -->
+        <div class="page-title">
+            <div class="en">
+                <h2>Massage & Wellness Services</h2>
+                <p>Therapeutic and relaxing treatments designed to promote healing, relaxation, and total wellness</p>
+            </div>
+            <div class="es">
+                <h2>Servicios de Masaje y Bienestar</h2>
+                <p>Tratamientos terapéuticos y relajantes diseñados para promover la curación, relajación y bienestar total</p>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="service-grid">
             <!-- Service 1 -->
-            <div class="service-detail">
-                <div class="service-number">01</div>
-                <h2>Hot Stone Massages</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Experience the ultimate relaxation with our signature hot stone massage. Smooth heated stones are strategically placed on your body to ease tension, improve circulation, and create profound relaxation of muscles and mind.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Deep muscle relaxation and tension relief</li>
-                            <li>Improves blood circulation throughout body</li>
-                            <li>Reduces stress and promotes mental relaxation</li>
-                            <li>Alleviates muscle pain and soreness</li>
-                            <li>Promotes better sleep quality</li>
-                            <li>Enhances immune system function</li>
-                            <li>Soothes arthritis and joint pain</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>Smooth basalt stones are heated to a therapeutic temperature and placed on your back, shoulders, chest, and other areas of tension. Our massage therapist uses these warm stones as tools to massage and manipulate your muscles, or places them directly on your skin to allow deep heat penetration. The combination of heat and therapeutic touch creates an unparalleled relaxation experience.</p>
-                        <p class="duration"><strong>Duration:</strong> 60-90 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Hot Stone Massage Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">1</div>
+                <h3 class="en">Swedish Massage</h3>
+                <h3 class="es">Masaje Sueco</h3>
+                <p class="en">Classic relaxing massage technique that improves circulation and reduces muscle tension for complete relaxation.</p>
+                <p class="es">Técnica clásica de masaje relajante que mejora la circulación y reduce la tensión muscular para una relajación completa.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60-90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60-90 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 2 -->
-            <div class="service-detail">
-                <div class="service-number">02</div>
-                <h2>Ultracavitation Body</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Target stubborn fat and cellulite with our advanced ultracavitation body treatment. This non-invasive technology uses ultrasonic waves to break down fat cells and improve body contours without surgery or downtime.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Reduces appearance of cellulite</li>
-                            <li>Targets stubborn fat deposits</li>
-                            <li>Improves body contours and smoothness</li>
-                            <li>Stimulates lymphatic drainage</li>
-                            <li>Non-invasive, no surgery required</li>
-                            <li>No downtime or side effects</li>
-                            <li>Visible results after few treatments</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>Our ultracavitation device creates ultrasonic waves that penetrate deep into tissue layers. These waves create microscopic bubbles in fat cells, causing them to break down and be processed by the body's lymphatic system. The treatment stimulates drainage and promotes smoother, more contoured skin. Multiple sessions yield optimal results.</p>
-                        <p class="duration"><strong>Duration:</strong> 50-60 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Ultracavitation Body Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">2</div>
+                <h3 class="en">Deep Tissue Massage</h3>
+                <h3 class="es">Masaje de Tejido Profundo</h3>
+                <p class="en">Intensive therapeutic massage targeting deep muscle layers to release chronic tension and knots effectively.</p>
+                <p class="es">Masaje terapéutico intensivo que apunta a capas profundas de músculos para liberar tensión crónica y nudos efectivamente.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60-90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60-90 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 3 -->
-            <div class="service-detail">
-                <div class="service-number">03</div>
-                <h2>Wood Massage</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Discover the ancient healing art of wood massage using specialized wooden tools. This traditional technique stimulates pressure points, improves circulation, and releases deep muscle tension for therapeutic benefits.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Stimulates acupressure points</li>
-                            <li>Improves blood and lymph circulation</li>
-                            <li>Releases deep muscle tension</li>
-                            <li>Reduces pain and stiffness</li>
-                            <li>Promotes healing and recovery</li>
-                            <li>Balances body energy</li>
-                            <li>Completely natural and holistic</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>Using specially crafted wooden massage tools, our therapist applies therapeutic pressure to your body following meridian pathways and muscle groups. The unique shape and texture of the wooden tools allows for precise pressure point stimulation while being gentle on skin. The treatment releases tension, improves circulation, and promotes overall wellness.</p>
-                        <p class="duration"><strong>Duration:</strong> 60 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Wood Massage Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">3</div>
+                <h3 class="en">Hot Stone Massage</h3>
+                <h3 class="es">Masaje con Piedras Calientes</h3>
+                <p class="en">Luxurious treatment using heated stones to melt away tension, improve circulation, and provide deep relaxation.</p>
+                <p class="es">Tratamiento de lujo usando piedras calientes para aliviar la tensión, mejorar la circulación y proporcionar relajación profunda.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 75 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 75 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 4 -->
-            <div class="service-detail">
-                <div class="service-number">04</div>
-                <h2>Body Mesotherapy</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Our body mesotherapy treatment uses specialized micro-injection or topical techniques to deliver active ingredients directly to targeted body areas. This advanced therapy revitalizes skin, reduces cellulite, and improves body contours.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Reduces cellulite appearance</li>
-                            <li>Tightens and firms loose skin</li>
-                            <li>Improves skin texture and tone</li>
-                            <li>Stimulates collagen production</li>
-                            <li>Increases skin hydration</li>
-                            <li>Targets problem areas effectively</li>
-                            <li>Visible improvements after 2-3 treatments</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>We apply customized serums and active ingredients to target areas using either very fine micro-injections or advanced topical application techniques. These ingredients penetrate deeply into the mesoderm layer, delivering collagen-stimulating factors and lipolytic compounds. The treatment activates your body's natural healing response, improving skin quality and reducing cellulite.</p>
-                        <p class="duration"><strong>Duration:</strong> 50-60 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Body Mesotherapy Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">4</div>
+                <h3 class="en">Thai Massage</h3>
+                <h3 class="es">Masaje Tailandés</h3>
+                <p class="en">Ancient healing technique combining acupressure and stretching to improve flexibility and energy flow throughout the body.</p>
+                <p class="es">Técnica de curación antigua que combina acupresión y estiramientos para mejorar la flexibilidad y el flujo de energía corporal.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 90 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 5 -->
-            <div class="service-detail">
-                <div class="service-number">05</div>
-                <h2>Reducing Massages</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Our specialized reducing massage targets fatty areas and promotes lymphatic drainage to help reduce body measurements and improve contours. This therapeutic massage complements a healthy lifestyle for optimal body reshaping.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Stimulates lymphatic drainage</li>
-                            <li>Reduces fluid retention</li>
-                            <li>Targets fatty deposits</li>
-                            <li>Improves body contours and shape</li>
-                            <li>Enhances circulation</li>
-                            <li>Helps eliminate toxins</li>
-                            <li>Visible reduction in measurements</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>Using specialized massage techniques, our therapist applies strategic pressure and movements to stimulate lymphatic drainage and mobilize fat deposits. The massage follows the body's lymphatic pathways, helping to move fluid and metabolic waste out of targeted areas. Regular treatments enhance results and help maintain your ideal body shape.</p>
-                        <p class="duration"><strong>Duration:</strong> 60 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Reducing Massage Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">5</div>
+                <h3 class="en">Sports Massage</h3>
+                <h3 class="es">Masaje Deportivo</h3>
+                <p class="en">Specialized treatment for athletes and active individuals to enhance performance, prevent injury, and speed recovery.</p>
+                <p class="es">Tratamiento especializado para atletas e individuos activos para mejorar el rendimiento, prevenir lesiones y acelerar la recuperación.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60-75 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60-75 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 6 -->
-            <div class="service-detail">
-                <div class="service-number">06</div>
-                <h2>Mesotherapy Injections (ALIDYA)</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>ALIDYA mesotherapy injections represent the latest advancement in body contouring and skin rejuvenation. This advanced treatment uses specialized formulas to dissolve fat, reduce cellulite, and tighten skin with remarkable results.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Effectively dissolves localized fat deposits</li>
-                            <li>Dramatically reduces cellulite appearance</li>
-                            <li>Tightens and firms loose skin</li>
-                            <li>Improves skin texture significantly</li>
-                            <li>Long-lasting results</li>
-                            <li>Minimal downtime</li>
-                            <li>Visible improvements within 2-4 weeks</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>ALIDYA is a professional-grade mesotherapy solution specifically formulated to target fat cells and stimulate collagen. Fine injections place the formula precisely in fatty or cellulite-affected areas. The active ingredients trigger fat breakdown and lymphatic drainage while stimulating fibroblasts to produce new collagen. Results progressively improve as the body naturally processes treated areas.</p>
-                        <p class="duration"><strong>Duration:</strong> 45-60 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>ALIDYA Mesotherapy Injection Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">6</div>
+                <h3 class="en">Reflexology</h3>
+                <h3 class="es">Reflexología</h3>
+                <p class="en">Therapeutic foot massage that stimulates pressure points to enhance health, reduce stress, and promote wellness throughout the body.</p>
+                <p class="es">Masaje terapéutico del pie que estimula puntos de presión para mejorar la salud, reducir el estrés y promover el bienestar general.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 7 -->
-            <div class="service-detail">
-                <div class="service-number">07</div>
-                <h2>Postoperative Massages</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Support your recovery with our specialized postoperative massage therapy. Designed specifically for patients recovering from surgical procedures, these gentle treatments promote healing, reduce swelling, and improve circulation without compromising surgical sites.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Promotes faster healing and recovery</li>
-                            <li>Reduces post-surgical swelling and bruising</li>
-                            <li>Improves blood circulation</li>
-                            <li>Alleviates post-operative discomfort</li>
-                            <li>Prevents scar tissue buildup</li>
-                            <li>Supports lymphatic drainage</li>
-                            <li>Enhances overall recovery outcomes</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>Our trained therapists understand post-surgical needs and protocols. We provide gentle, carefully targeted massage to areas that can safely receive treatment, always respecting surgical sites and healing zones. Techniques focus on stimulating circulation, reducing inflammation, and promoting the body's natural healing mechanisms. We coordinate with your surgeon to ensure optimal safety.</p>
-                        <p class="duration"><strong>Duration:</strong> 45-60 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Postoperative Massage Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">7</div>
+                <h3 class="en">Aromatherapy Massage</h3>
+                <h3 class="es">Masaje de Aromaterapia</h3>
+                <p class="en">Relaxing massage enhanced with essential oils to provide emotional balance, stress relief, and enhanced relaxation experience.</p>
+                <p class="es">Masaje relajante mejorado con aceites esenciales para proporcionar equilibrio emocional, alivio del estrés y experiencia relajante mejorada.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 75 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 75 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 8 -->
-            <div class="service-detail">
-                <div class="service-number">08</div>
-                <h2>Waxing Services</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Professional waxing services for smooth, hair-free skin. Using premium quality waxes and proper techniques, we provide effective hair removal with minimal irritation and long-lasting results.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Removes hair from root for smooth skin</li>
-                            <li>Results last 3-6 weeks</li>
-                            <li>No stubble or ingrown hairs</li>
-                            <li>Skin becomes smoother over time</li>
-                            <li>Professional technique minimizes discomfort</li>
-                            <li>Available for all body areas</li>
-                            <li>Suitable for all skin types</li>
-                        </ul>
-                        <h3>Services Include</h3>
-                        <ul>
-                            <li>Eyebrow shaping and maintenance</li>
-                            <li>Face waxing (upper lip, chin, cheeks)</li>
-                            <li>Leg waxing (full, half, or areas)</li>
-                            <li>Bikini waxing</li>
-                            <li>Brazilian waxing</li>
-                            <li>Underarm waxing</li>
-                            <li>Full body waxing</li>
-                        </ul>
-                        <p class="duration"><strong>Duration:</strong> 15-45 minutes depending on area</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Professional Waxing Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">8</div>
+                <h3 class="en">Body Scrub & Polish</h3>
+                <h3 class="es">Exfoliación y Pulido Corporal</h3>
+                <p class="en">Luxurious exfoliating treatment that removes dead skin and leaves your body silky smooth and radiant.</p>
+                <p class="es">Tratamiento exfoliante de lujo que elimina la piel muerta y deja tu cuerpo suave y radiante.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 9 -->
-            <div class="service-detail">
-                <div class="service-number">09</div>
-                <h2>Collageno Applied and More</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Our premium collageno treatment harnesses the power of collagen and advanced bio-active ingredients to rejuvenate and firm your skin. This comprehensive treatment addresses multiple aging concerns for dramatic transformation.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Dramatically improves skin firmness and elasticity</li>
-                            <li>Reduces wrinkles and fine lines</li>
-                            <li>Hydrates and plumps skin deeply</li>
-                            <li>Stimulates natural collagen production</li>
-                            <li>Improves skin radiance and glow</li>
-                            <li>Visible results immediately and progressively</li>
-                            <li>Addresses multiple aging concerns</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>This advanced treatment combines collagen-infused serums, masks, and bio-stimulating techniques. Applied collagen works immediately to plump skin and reduce fine lines, while growth factors and peptides stimulate your body's own collagen production. The treatment may include additional modalities such as microcurrent, light therapy, or other technologies to maximize results. Each application is customized to your specific skin needs.</p>
-                        <p class="duration"><strong>Duration:</strong> 60-90 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Collageno Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">9</div>
+                <h3 class="en">Couples Massage</h3>
+                <h3 class="es">Masaje para Parejas</h3>
+                <p class="en">Romantic and relaxing experience where couples receive simultaneous massage treatments in a private, serene environment.</p>
+                <p class="es">Experiencia romántica y relajante donde las parejas reciben tratamientos de masaje simultáneo en un ambiente privado y sereno.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60-90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60-90 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
         </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Relax, Rejuvenate, and Renew</h2>
-            <p>Book your massage or body treatment today and discover the healing benefits</p>
-            <a href="contact.html" class="cta-button">Schedule Your Treatment</a>
-            <p class="phone-text">Or call us at <strong>(646) 735-1099</strong></p>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>940 E 163rd Street</p>
-                    <p>Bronx, NY 10459</p>
+                    <h4 class="en">Contact Info</h4>
+                    <h4 class="es">Información de Contacto</h4>
+                    <p>909 E 156 Street</p>
+                    <p>Bronx, NY 10455</p>
                     <p>📞 (646) 735-1099</p>
                 </div>
+
                 <div class="footer-section">
-                    <h4>Hours</h4>
-                    <p>Mon - Fri: 10AM - 8PM</p>
-                    <p>Sat - Sun: 10AM - 6PM</p>
-                    <p>By Appointment Only</p>
+                    <h4 class="en">Hours</h4>
+                    <h4 class="es">Horario</h4>
+                    <p class="en">Mon - Fri: 10AM - 8PM</p>
+                    <p class="es">Lun - Vie: 10AM - 8PM</p>
+                    <p class="en">Sat - Sun: 10AM - 6PM</p>
+                    <p class="es">Sáb - Dom: 10AM - 6PM</p>
                 </div>
+
                 <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
-                        <li><a href="facial-rejuvenations.html">Facial Rejuvenations</a></li>
-                        <li><a href="massages.html">Massages</a></li>
-                    </ul>
+                    <h4 class="en">Quick Links</h4>
+                    <h4 class="es">Enlaces Rápidos</h4>
+                    <p><a href="index.html" class="en">Home</a><a href="index.html" class="es">Inicio</a></p>
+                    <p><a href="facial-cleaning.html" class="en">Facial Cleaning</a><a href="facial-cleaning.html" class="es">Limpieza Facial</a></p>
+                    <p><a href="facial-rejuvenations.html" class="en">Facial Rejuvenations</a><a href="facial-rejuvenations.html" class="es">Rejuvenecimiento</a></p>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2024 VP Beauty Aesthetics Place. All rights reserved.</p>
-                <p>100% Satisfaction Guaranteed ✓</p>
+                <p class="en">&copy; 2026 VP Beauty Aesthetics Place. All rights reserved. 100% Satisfaction Guarantee ✓</p>
+                <p class="es">&copy; 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados. 100% Garantía de Satisfacción ✓</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.en, .es').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('hidden');
+            });
+            
+            if (lang === 'en') {
+                document.querySelectorAll('.en').forEach(el => {
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="en"]').classList.add('active');
+                document.querySelector('[data-lang="es"]').classList.remove('active');
+            } else if (lang === 'es') {
+                document.querySelectorAll('.es').forEach(el => {
+                    el.classList.add('active');
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="es"]').classList.add('active');
+                document.querySelector('[data-lang="en"]').classList.remove('active');
+            }
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('preferredLanguage') || 'en';
+            switchLanguage(saved);
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                switchLanguage(this.dataset.lang);
+            });
+        });
+    </script>
 </body>
 </html>

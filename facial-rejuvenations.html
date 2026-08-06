@@ -3,321 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facial Rejuvenations - VP Beauty Aesthetics</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Facial Rejuvenations | Rejuvenecimiento Facial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #9b6b9e;
+            --secondary-color: #d4998f;
+            --accent-color: #8b6f47;
+            --light-bg: #f5f1ec;
+            --dark-text: #3a3a3a;
+            --light-text: #666666;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50px;
+            padding: 8px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .lang-btn.active {
+            background: #9b6b9e;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .es { display: none; }
+        .es.active { display: block; }
+        .en { display: block; }
+        .en.hidden { display: none; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        header a:hover {
+            opacity: 1;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .service-details {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .service-details strong {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(155, 107, 158, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">VP Beauty Aesthetics</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
-                <li><a href="facial-rejuvenations.html" class="active">Facial Rejuvenations</a></li>
-                <li><a href="massages.html">Massages</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">🇺🇸</button>
+        <button class="lang-btn" data-lang="es">🇪🇸</button>
+    </div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Facial Rejuvenations</h1>
-            <p>Advanced anti-aging and facial enhancement treatments</p>
+    <!-- Header -->
+    <header>
+        <div class="en">
+            <h1>VP Beauty Aesthetics Place</h1>
+            <p><a href="index.html">← Back to Home</a></p>
         </div>
-    </section>
+        <div class="es">
+            <h1>Lugar de Estética de Belleza VP</h1>
+            <p><a href="index.html">← Volver al Inicio</a></p>
+        </div>
+    </header>
 
-    <!-- Services -->
-    <section class="services-section">
-        <div class="container">
+    <div class="container">
+        <!-- Page Title -->
+        <div class="page-title">
+            <div class="en">
+                <h2>Facial Rejuvenation Treatments</h2>
+                <p>Premium anti-aging and skin renewal treatments for a youthful, radiant complexion</p>
+            </div>
+            <div class="es">
+                <h2>Tratamientos de Rejuvenecimiento Facial</h2>
+                <p>Tratamientos premium anti-envejecimiento y renovación de piel para un cutis radiante y juvenil</p>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="service-grid">
             <!-- Service 1 -->
-            <div class="service-detail">
-                <div class="service-number">01</div>
-                <h2>Nasolabial Fillers (Hyaluronic Acid)</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Smooth and soften the nasolabial folds (smile lines) with our premium hyaluronic acid fillers. This non-surgical treatment restores volume and creates a more youthful appearance by filling in creases that deepen with age.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Reduces appearance of smile lines</li>
-                            <li>Restores facial volume and fullness</li>
-                            <li>Natural-looking, gradual results</li>
-                            <li>Immediate improvement with no downtime</li>
-                            <li>Results last 6-12 months</li>
-                            <li>Hyaluronic acid is naturally found in skin</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>After consultation to determine your goals, the treatment area is gently numbed. Our specialist carefully injects premium hyaluronic acid filler into the nasolabial folds, sculpting and smoothing as they work. The injection creates subtle, natural-looking results that enhance your features while maintaining facial expression.</p>
-                        <p class="duration"><strong>Duration:</strong> 30-45 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Hyaluronic Acid Filler Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">1</div>
+                <h3 class="en">Dermal Fillers</h3>
+                <h3 class="es">Rellenos Dérmicos</h3>
+                <p class="en">Non-surgical enhancement using premium fillers to restore volume and reduce deep lines and wrinkles naturally.</p>
+                <p class="es">Mejora no quirúrgica usando rellenos premium para restaurar volumen y reducir líneas profundas y arrugas naturalmente.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 45-60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 45-60 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 2 -->
-            <div class="service-detail">
-                <div class="service-number">02</div>
-                <h2>Facelift with Demae Stretch</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Our advanced Demae Stretch technique provides non-surgical facelift results by tightening and lifting facial tissues. This innovative treatment stimulates collagen production and provides a comprehensive facial rejuvenation.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Non-surgical facelift results</li>
-                            <li>Lifts and tightens sagging skin</li>
-                            <li>Stimulates natural collagen production</li>
-                            <li>Improves jawline definition</li>
-                            <li>Reduces facial wrinkles and fine lines</li>
-                            <li>No surgery or downtime required</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>Using our specialized Demae Stretch technology, we apply targeted micro-currents and lifting techniques to the facial structure. This stimulates deep muscle contractions and collagen remodeling, naturally lifting and tightening the skin. The treatment works on cheeks, jawline, forehead, and neck for comprehensive facial rejuvenation.</p>
-                        <p class="duration"><strong>Duration:</strong> 60-75 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Demae Stretch Facelift Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">2</div>
+                <h3 class="en">Radiofrequency Therapy</h3>
+                <h3 class="es">Terapia de Radiofrecuencia</h3>
+                <p class="en">Advanced skin tightening treatment that stimulates collagen production for firmer, more youthful-looking skin.</p>
+                <p class="es">Tratamiento avanzado de tensión de piel que estimula la producción de colágeno para una piel más firme y juvenil.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 3 -->
-            <div class="service-detail">
-                <div class="service-number">03</div>
-                <h2>Baby Face Expression Line Remover</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Soften and minimize expression lines, wrinkles, and dynamic creases with our specialized treatment. This advanced procedure targets the lines created by facial expressions without eliminating your natural ability to emote.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Reduces forehead lines and wrinkles</li>
-                            <li>Softens crow's feet around eyes</li>
-                            <li>Minimizes frown lines between brows</li>
-                            <li>Maintains natural facial expressions</li>
-                            <li>Provides a youthful, refreshed appearance</li>
-                            <li>Results improve over 2-4 weeks</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>Our specialist carefully assesses your expression lines and develops a customized treatment plan. Using precise techniques, we target the muscles responsible for expression lines while preserving your unique facial personality. The treatment is gentle and creates subtle, natural-looking improvements.</p>
-                        <p class="duration"><strong>Duration:</strong> 30-40 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Expression Line Removal Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">3</div>
+                <h3 class="en">PRP Therapy (Platelet-Rich Plasma)</h3>
+                <h3 class="es">Terapia PRP (Plasma Rico en Plaquetas)</h3>
+                <p class="en">Regenerative treatment using your own blood plasma to stimulate natural healing and collagen growth for radiant skin.</p>
+                <p class="es">Tratamiento regenerativo usando tu propio plasma sanguíneo para estimular la curación natural y el crecimiento de colágeno.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 75 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 75 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 4 -->
-            <div class="service-detail">
-                <div class="service-number">04</div>
-                <h2>PRP Platelet</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Experience the power of Platelet Rich Plasma (PRP) therapy, a cutting-edge regenerative treatment that uses your own blood's healing properties to rejuvenate facial skin. This natural treatment stimulates collagen and improves skin quality.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Natural regenerative therapy using your own cells</li>
-                            <li>Stimulates collagen and elastin production</li>
-                            <li>Improves skin texture and tone</li>
-                            <li>Reduces fine lines and wrinkles</li>
-                            <li>Creates youthful, glowing skin</li>
-                            <li>Results improve over time with natural collagen growth</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>We start by collecting a small amount of your blood, which is then processed to extract the platelet-rich plasma. This concentrated serum, rich with growth factors, is carefully applied to your facial skin through micro-needling or injection. The growth factors stimulate your body's natural healing response, promoting new collagen and improving overall skin quality.</p>
-                        <p class="duration"><strong>Duration:</strong> 60-90 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>PRP Platelet Therapy Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">4</div>
+                <h3 class="en">Microneedling</h3>
+                <h3 class="es">Microagujas</h3>
+                <p class="en">Minimally invasive treatment that creates controlled micro-injuries to trigger natural collagen and elastin production.</p>
+                <p class="es">Tratamiento mínimamente invasivo que crea microlesiones controladas para desencadenar la producción natural de colágeno y elastina.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 5 -->
-            <div class="service-detail">
-                <div class="service-number">05</div>
-                <h2>Toxin Rich Plasma Botulinum (Botox)</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Our premium Botox treatments use the world-renowned botulinum toxin to smooth dynamic wrinkles and prevent future lines. This proven treatment has been safely used for cosmetic purposes for over two decades.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Smooths forehead lines and wrinkles</li>
-                            <li>Eliminates crow's feet</li>
-                            <li>Softens frown lines (glabellar lines)</li>
-                            <li>Prevents new wrinkles from forming</li>
-                            <li>Results visible in 3-5 days</li>
-                            <li>Full results appear in 2 weeks</li>
-                            <li>Results last 3-4 months</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>During a consultation, our specialist assesses your facial anatomy and discusses your aesthetic goals. Tiny injections of botulinum toxin are carefully placed into specific facial muscles that create expression lines. The toxin relaxes these muscles, smoothing wrinkles and creating a more youthful appearance while maintaining natural facial expressions.</p>
-                        <p class="duration"><strong>Duration:</strong> 15-20 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Botox Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">5</div>
+                <h3 class="en">Chemical Resurfacing</h3>
+                <h3 class="es">Resurfacing Químico</h3>
+                <p class="en">Intensive chemical peel that removes damaged layers and promotes new skin growth for dramatic rejuvenation results.</p>
+                <p class="es">Peeling químico intensivo que elimina capas dañadas y promueve el crecimiento de nueva piel para resultados dramáticos de rejuvenecimiento.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 90 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 6 -->
-            <div class="service-detail">
-                <div class="service-number">06</div>
-                <h2>Bipolarized Radiofrequency</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Our advanced radiofrequency technology uses electromagnetic waves to heat deep skin layers, stimulating collagen production and tightening skin. This non-invasive treatment delivers dramatic lifting and tightening results without surgery.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Lifts and tightens facial skin</li>
-                            <li>Stimulates collagen remodeling</li>
-                            <li>Reduces fine lines and wrinkles</li>
-                            <li>Improves skin texture and elasticity</li>
-                            <li>Tightens jawline and neck</li>
-                            <li>No downtime or surgery needed</li>
-                            <li>Results continue improving for 6 months</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>Using our state-of-the-art bipolarized radiofrequency device, we carefully heat the deep dermal layers of your skin. This controlled heating stimulates your body's natural collagen production and remodeling. The treatment is comfortable and produces immediate tightening with continued improvements as collagen rebuilds over time.</p>
-                        <p class="duration"><strong>Duration:</strong> 45-60 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Radiofrequency Tightening Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">6</div>
+                <h3 class="en">Facial Acupuncture</h3>
+                <h3 class="es">Acupuntura Facial</h3>
+                <p class="en">Ancient healing technique combined with modern aesthetics to improve circulation and natural glow while reducing wrinkles.</p>
+                <p class="es">Técnica de curación antigua combinada con estética moderna para mejorar la circulación y el brillo natural mientras se reducen las arrugas.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 7 -->
-            <div class="service-detail">
-                <div class="service-number">07</div>
-                <h2>Cavitation Biostimulation</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Our advanced cavitation biostimulation uses ultrasonic waves to rejuvenate facial skin and stimulate natural collagen production. This innovative technology provides lifting, tightening, and skin renewal without needles or downtime.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Stimulates natural collagen production</li>
-                            <li>Lifts and firms facial skin</li>
-                            <li>Reduces fine lines and wrinkles</li>
-                            <li>Improves skin elasticity and tone</li>
-                            <li>Non-invasive, no needles required</li>
-                            <li>No downtime or side effects</li>
-                            <li>Results improve progressively</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>Using ultrasonic cavitation technology, we create gentle vibrations that penetrate skin tissue and stimulate cellular activity. This biostimulation triggers your body's natural healing response, promoting robust collagen production and cellular renewal. The treatment is relaxing and provides cumulative results with each session.</p>
-                        <p class="duration"><strong>Duration:</strong> 45-50 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Cavitation Biostimulation Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">7</div>
+                <h3 class="en">LED Light Therapy</h3>
+                <h3 class="es">Terapia de Luz LED</h3>
+                <p class="en">Non-invasive light therapy that reduces inflammation, stimulates collagen, and improves skin texture and tone.</p>
+                <p class="es">Terapia de luz no invasiva que reduce la inflamación, estimula el colágeno y mejora la textura y el tono de la piel.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 45 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 45 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
 
             <!-- Service 8 -->
-            <div class="service-detail">
-                <div class="service-number">08</div>
-                <h2>Facial Chocolate Therapy</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <h3>Treatment Overview</h3>
-                        <p>Indulge in the ultimate luxury skincare experience with our decadent chocolate therapy facial. Rich in antioxidants and soothing properties, premium chocolate nourishes, protects, and rejuvenates your skin for a radiant, youthful glow.</p>
-                        <h3>Benefits</h3>
-                        <ul>
-                            <li>Rich in antioxidants to protect skin</li>
-                            <li>Deeply nourishing and moisturizing</li>
-                            <li>Soothes and calms irritated skin</li>
-                            <li>Improves blood circulation</li>
-                            <li>Enhances skin radiance and glow</li>
-                            <li>Luxurious, spa-like experience</li>
-                            <li>Suitable for all skin types</li>
-                        </ul>
-                        <h3>Process</h3>
-                        <p>This indulgent treatment begins with a gentle cleanse and exfoliation. We then apply a premium chocolate mask infused with essential oils and active ingredients. While the mask works its magic, you'll receive a relaxing hand or arm massage. The experience concludes with soothing serum and moisturizer application, leaving your skin soft, glowing, and deeply nourished.</p>
-                        <p class="duration"><strong>Duration:</strong> 60 minutes</p>
-                    </div>
-                    <div class="service-image">
-                        <div class="image-placeholder">
-                            <p>Chocolate Therapy Treatment</p>
-                            <p class="placeholder-text">Add your photo here</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <div class="service-number">8</div>
+                <h3 class="en">Anti-Aging Facial Massage</h3>
+                <h3 class="es">Masaje Facial Anti-Envejecimiento</h3>
+                <p class="en">Therapeutic facial massage using specialized techniques to lift, tone, and rejuvenate facial muscles and skin.</p>
+                <p class="es">Masaje facial terapéutico usando técnicas especializadas para levantar, tonificar y rejuvenecer los músculos y la piel facial.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
                 </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
             </div>
         </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Turn Back Time with Our Rejuvenation Treatments</h2>
-            <p>Book your consultation today and discover which treatment is perfect for you</p>
-            <a href="contact.html" class="cta-button">Schedule Consultation</a>
-            <p class="phone-text">Or call us at <strong>(646) 735-1099</strong></p>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>940 E 163rd Street</p>
-                    <p>Bronx, NY 10459</p>
+                    <h4 class="en">Contact Info</h4>
+                    <h4 class="es">Información de Contacto</h4>
+                    <p>909 E 156 Street</p>
+                    <p>Bronx, NY 10455</p>
                     <p>📞 (646) 735-1099</p>
                 </div>
+
                 <div class="footer-section">
-                    <h4>Hours</h4>
-                    <p>Mon - Fri: 10AM - 8PM</p>
-                    <p>Sat - Sun: 10AM - 6PM</p>
-                    <p>By Appointment Only</p>
+                    <h4 class="en">Hours</h4>
+                    <h4 class="es">Horario</h4>
+                    <p class="en">Mon - Fri: 10AM - 8PM</p>
+                    <p class="es">Lun - Vie: 10AM - 8PM</p>
+                    <p class="en">Sat - Sun: 10AM - 6PM</p>
+                    <p class="es">Sáb - Dom: 10AM - 6PM</p>
                 </div>
+
                 <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
-                        <li><a href="facial-rejuvenations.html">Facial Rejuvenations</a></li>
-                        <li><a href="massages.html">Massages</a></li>
-                    </ul>
+                    <h4 class="en">Quick Links</h4>
+                    <h4 class="es">Enlaces Rápidos</h4>
+                    <p><a href="index.html" class="en">Home</a><a href="index.html" class="es">Inicio</a></p>
+                    <p><a href="facial-cleaning.html" class="en">Facial Cleaning</a><a href="facial-cleaning.html" class="es">Limpieza Facial</a></p>
+                    <p><a href="massages.html" class="en">Massages</a><a href="massages.html" class="es">Masajes</a></p>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2024 VP Beauty Aesthetics Place. All rights reserved.</p>
-                <p>100% Satisfaction Guaranteed ✓</p>
+                <p class="en">&copy; 2026 VP Beauty Aesthetics Place. All rights reserved. 100% Satisfaction Guarantee ✓</p>
+                <p class="es">&copy; 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados. 100% Garantía de Satisfacción ✓</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.en, .es').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('hidden');
+            });
+            
+            if (lang === 'en') {
+                document.querySelectorAll('.en').forEach(el => {
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="en"]').classList.add('active');
+                document.querySelector('[data-lang="es"]').classList.remove('active');
+            } else if (lang === 'es') {
+                document.querySelectorAll('.es').forEach(el => {
+                    el.classList.add('active');
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="es"]').classList.add('active');
+                document.querySelector('[data-lang="en"]').classList.remove('active');
+            }
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('preferredLanguage') || 'en';
+            switchLanguage(saved);
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                switchLanguage(this.dataset.lang);
+            });
+        });
+    </script>
 </body>
 </html>
