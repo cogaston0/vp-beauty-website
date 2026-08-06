@@ -30,8 +30,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--dark-text);
-            background: linear-gradient(rgba(245, 241, 236, 0.92), rgba(245, 241, 236, 0.92)), url('bg-home.png') center/cover no-repeat fixed;
-            background-attachment: fixed;
+            background-color: var(--light-bg);
         }
 
         .container {
@@ -102,10 +101,12 @@
 
         /* Navigation */
         nav {
-            background: var(--white);
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            background: white;
+            border-bottom: 2px solid var(--primary-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         nav ul {
@@ -120,152 +121,77 @@
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
-            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--primary-color);
             color: white;
-            padding: 80px 20px;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 50px;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--white);
-            color: var(--primary-color);
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .cta-button:hover {
-            background: var(--light-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
         /* Services Section */
         .services {
-            margin-bottom: 60px;
-        }
-
-        .services h3 {
-            font-size: 2rem;
+            padding: 60px 0;
             text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 40px;
-            font-weight: 700;
         }
 
-        .service-grid {
+        .services h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
 
         .service-card {
             background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            text-align: center;
+            border-top: 4px solid var(--secondary-color);
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
 
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card h4 {
-            font-size: 1.4rem;
+        .service-card h3 {
             color: var(--primary-color);
             margin-bottom: 15px;
-            font-weight: 600;
         }
 
         .service-card p {
             color: var(--light-text);
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
         }
 
-        .service-link {
-            color: var(--primary-color);
+        .view-link {
+            color: var(--accent-color);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
         }
 
-        .service-link:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Special Offer */
-        .special-offer {
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 60px;
-        }
-
-        .special-offer h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .discount-text {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #FFD700;
-        }
-
-        .special-offer p {
-            font-size: 1.1rem;
-            opacity: 0.95;
+        .view-link:hover {
+            color: var(--primary-color);
         }
 
         /* Footer */
         footer {
-            background: var(--dark-text);
-            color: white;
-            padding: 40px 0;
+            background: #f0f0f0;
+            padding: 40px 0 20px;
             margin-top: 60px;
+            border-top: 2px solid var(--primary-color);
         }
 
         .footer-content {
@@ -276,74 +202,43 @@
         }
 
         .footer-section h4 {
-            font-size: 1.2rem;
+            color: var(--primary-color);
             margin-bottom: 15px;
-            color: var(--secondary-color);
-            font-weight: 600;
         }
 
-        .footer-section p {
-            margin-bottom: 10px;
-            opacity: 0.9;
+        .footer-section p, .footer-section li {
+            color: var(--light-text);
+            margin-bottom: 8px;
         }
 
         .footer-section ul {
             list-style: none;
         }
 
-        .footer-section ul li {
-            margin-bottom: 8px;
-        }
-
         .footer-section a {
-            color: white;
+            color: var(--accent-color);
             text-decoration: none;
-            transition: color 0.3s;
         }
 
         .footer-section a:hover {
-            color: var(--secondary-color);
+            text-decoration: underline;
         }
 
         .footer-bottom {
             text-align: center;
+            border-top: 1px solid #ddd;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            opacity: 0.8;
+            color: var(--light-text);
+            font-size: 0.9rem;
         }
+
+        .emoji { font-size: 2rem; display: block; margin-bottom: 15px; }
 
         /* Responsive */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-
-            .hero {
-                padding: 50px 20px;
-            }
-
-            nav ul {
-                gap: 15px;
-            }
-
-            nav a {
-                font-size: 0.9rem;
-            }
-
-            .language-switcher {
-                top: 10px;
-                right: 10px;
-                padding: 6px 12px;
-            }
-
-            .lang-btn {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
+            header h1 { font-size: 1.8rem; }
+            nav ul { gap: 15px; }
+            .services h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -369,91 +264,58 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="#home" class="en">Home</a><a href="#home" class="es">Inicio</a></li>
+            <li><a href="index.html" class="en">Home</a><a href="index.html" class="es">Inicio</a></li>
             <li><a href="facial-cleaning.html" class="en">Facial Cleaning</a><a href="facial-cleaning.html" class="es">Limpieza Facial</a></li>
-            <li><a href="facial-rejuvenations.html" class="en">Facial Rejuvenations</a><a href="facial-rejuvenations.html" class="es">Rejuvenecimiento Facial</a></li>
+            <li><a href="facial-rejuvenations.html" class="en">Facial Rejuvenations</a><a href="facial-rejuvenations.html" class="es">Rejuvenecimiento</a></li>
             <li><a href="massages.html" class="en">Massages</a><a href="massages.html" class="es">Masajes</a></li>
             <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="es">Contacto</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="container">
-        <div class="hero">
-            <div class="en">
-                <h2>Welcome to VP Beauty Aesthetics</h2>
-                <p>Discover premium facial and spa treatments designed to rejuvenate your skin and enhance your natural beauty</p>
-                <a href="contact.html" class="cta-button">Book an Appointment</a>
-            </div>
-            <div class="es">
-                <h2>Bienvenido a Estética de Belleza VP</h2>
-                <p>Descubre tratamientos faciales y de spa premium diseñados para rejuvenecer tu piel y realzar tu belleza natural</p>
-                <a href="contact.html" class="cta-button">Reservar una Cita</a>
-            </div>
-        </div>
-
-        <!-- Services Overview -->
+    <!-- Main Content -->
+    <main>
+        <!-- Services Section -->
         <section class="services">
-            <div class="en">
-                <h3>Our Services</h3>
-            </div>
-            <div class="es">
-                <h3>Nuestros Servicios</h3>
-            </div>
+            <div class="container">
+                <h2 class="en">Our Services</h2>
+                <h2 class="es">Nuestros Servicios</h2>
+                <p class="en">Explore our comprehensive range of professional beauty and wellness treatments</p>
+                <p class="es">Explore nuestra gama completa de tratamientos profesionales de belleza y bienestar</p>
 
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-icon">✨</div>
-                    <h4 class="en">Facial Cleaning</h4>
-                    <h4 class="es">Limpieza Facial</h4>
-                    <p class="en">Professional deep cleansing treatments with multiple options to suit your skin type</p>
-                    <p class="es">Tratamientos profesionales de limpieza profunda con múltiples opciones para tu tipo de piel</p>
-                    <a href="facial-cleaning.html" class="service-link">
-                        <span class="en">View Services →</span>
-                        <span class="es">Ver Servicios →</span>
-                    </a>
-                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="emoji">💇</span>
+                        <h3 class="en">Facial Cleaning</h3>
+                        <h3 class="es">Limpieza Facial</h3>
+                        <p class="en">Advanced cleansing treatments with vitamin infusions, peeling therapies, and professional makeup application</p>
+                        <p class="es">Tratamientos avanzados de limpieza con infusiones de vitaminas, terapias de peeling y aplicación de maquillaje profesional</p>
+                        <a href="facial-cleaning.html" class="view-link en">View Services →</a>
+                        <a href="facial-cleaning.html" class="view-link es">Ver Servicios →</a>
+                    </div>
 
-                <div class="service-card">
-                    <div class="service-icon">💎</div>
-                    <h4 class="en">Facial Rejuvenations</h4>
-                    <h4 class="es">Rejuvenecimiento Facial</h4>
-                    <p class="en">Premium anti-aging treatments including fillers, radiofrequency, and PRP therapy</p>
-                    <p class="es">Tratamientos premium anti-envejecimiento incluyendo rellenos, radiofrecuencia y terapia PRP</p>
-                    <a href="facial-rejuvenations.html" class="service-link">
-                        <span class="en">View Services →</span>
-                        <span class="es">Ver Servicios →</span>
-                    </a>
-                </div>
+                    <div class="service-card">
+                        <span class="emoji">✨</span>
+                        <h3 class="en">Facial Rejuvenations</h3>
+                        <h3 class="es">Rejuvenecimiento Facial</h3>
+                        <p class="en">Premium anti-aging treatments including fillers, radiofrequency, PRP therapy, and specialized skin therapies</p>
+                        <p class="es">Tratamientos premium anti-envejecimiento que incluyen rellenos, radiofrecuencia, terapia PRP y terapias especializadas de la piel</p>
+                        <a href="facial-rejuvenations.html" class="view-link en">View Services →</a>
+                        <a href="facial-rejuvenations.html" class="view-link es">Ver Servicios →</a>
+                    </div>
 
-                <div class="service-card">
-                    <div class="service-icon">🧖</div>
-                    <h4 class="en">Massages & Wellness</h4>
-                    <h4 class="es">Masajes y Bienestar</h4>
-                    <p class="en">Relaxing therapeutic massages and body treatments for total wellness</p>
-                    <p class="es">Masajes terapéuticos relajantes y tratamientos corporales para el bienestar total</p>
-                    <a href="massages.html" class="service-link">
-                        <span class="en">View Services →</span>
-                        <span class="es">Ver Servicios →</span>
-                    </a>
+                    <div class="service-card">
+                        <span class="emoji">🧘</span>
+                        <h3 class="en">Massages & Treatments</h3>
+                        <h3 class="es">Masajes y Tratamientos</h3>
+                        <p class="en">Relaxing and therapeutic massages, body treatments, and specialized wellness services</p>
+                        <p class="es">Masajes relajantes y terapéuticos, tratamientos corporales y servicios especializados de bienestar</p>
+                        <a href="massages.html" class="view-link en">View Services →</a>
+                        <a href="massages.html" class="view-link es">Ver Servicios →</a>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <!-- Special Offer -->
-        <section class="special-offer">
-            <div class="en">
-                <h2>🎉 Special Offer</h2>
-                <p class="discount-text">Get 30% OFF on Your First Visit!</p>
-                <p>Book your appointment today and experience the VP Beauty Aesthetics difference</p>
-            </div>
-            <div class="es">
-                <h2>🎉 Oferta Especial</h2>
-                <p class="discount-text">¡Obtén 30% de descuento en tu Primera Visita!</p>
-                <p>Reserva tu cita hoy y experimenta la diferencia de Estética de Belleza VP</p>
-            </div>
-        </section>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -498,24 +360,18 @@
 
     <script>
         function switchLanguage(lang) {
-            // Hide all
             document.querySelectorAll('.en, .es').forEach(el => {
-                el.classList.remove('active');
-                el.classList.add('hidden');
+                el.classList.remove('active', 'hidden');
             });
             
-            // Show selected
             if (lang === 'en') {
-                document.querySelectorAll('.en').forEach(el => {
-                    el.classList.remove('hidden');
-                });
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                document.querySelectorAll('.es').forEach(el => el.classList.add('hidden'));
                 document.querySelector('[data-lang="en"]').classList.add('active');
                 document.querySelector('[data-lang="es"]').classList.remove('active');
             } else if (lang === 'es') {
-                document.querySelectorAll('.es').forEach(el => {
-                    el.classList.add('active');
-                    el.classList.remove('hidden');
-                });
+                document.querySelectorAll('.es').forEach(el => el.classList.remove('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
                 document.querySelector('[data-lang="es"]').classList.add('active');
                 document.querySelector('[data-lang="en"]').classList.remove('active');
             }
@@ -523,13 +379,11 @@
             localStorage.setItem('preferredLanguage', lang);
         }
         
-        // Load saved preference
         window.addEventListener('load', function() {
             const saved = localStorage.getItem('preferredLanguage') || 'en';
             switchLanguage(saved);
         });
 
-        // Button click handlers
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 switchLanguage(this.dataset.lang);
