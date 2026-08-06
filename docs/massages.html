@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage & Wellness Services | Servicios de Masaje y Bienestar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #9b6b9e;
+            --secondary-color: #d4998f;
+            --accent-color: #8b6f47;
+            --light-bg: #f5f1ec;
+            --dark-text: #3a3a3a;
+            --light-text: #666666;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: linear-gradient(rgba(245, 241, 236, 0.92), rgba(245, 241, 236, 0.92)), url('bg-massages.png') center/cover no-repeat fixed;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50px;
+            padding: 8px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .lang-btn.active {
+            background: #9b6b9e;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .es { display: none; }
+        .es.active { display: block; }
+        .en { display: block; }
+        .en.hidden { display: none; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        header a:hover {
+            opacity: 1;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .service-details {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .service-details strong {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(155, 107, 158, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">🇺🇸</button>
+        <button class="lang-btn" data-lang="es">🇪🇸</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="en">
+            <h1>VP Beauty Aesthetics Place</h1>
+            <p><a href="index.html">← Back to Home</a></p>
+        </div>
+        <div class="es">
+            <h1>Lugar de Estética de Belleza VP</h1>
+            <p><a href="index.html">← Volver al Inicio</a></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Page Title -->
+        <div class="page-title">
+            <div class="en">
+                <h2>Massage & Wellness Services</h2>
+                <p>Therapeutic and relaxing treatments designed to promote healing, relaxation, and total wellness</p>
+            </div>
+            <div class="es">
+                <h2>Servicios de Masaje y Bienestar</h2>
+                <p>Tratamientos terapéuticos y relajantes diseñados para promover la curación, relajación y bienestar total</p>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="service-grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="service-number">1</div>
+                <h3 class="en">Swedish Massage</h3>
+                <h3 class="es">Masaje Sueco</h3>
+                <p class="en">Classic relaxing massage technique that improves circulation and reduces muscle tension for complete relaxation.</p>
+                <p class="es">Técnica clásica de masaje relajante que mejora la circulación y reduce la tensión muscular para una relajación completa.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60-90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60-90 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div class="service-number">2</div>
+                <h3 class="en">Deep Tissue Massage</h3>
+                <h3 class="es">Masaje de Tejido Profundo</h3>
+                <p class="en">Intensive therapeutic massage targeting deep muscle layers to release chronic tension and knots effectively.</p>
+                <p class="es">Masaje terapéutico intensivo que apunta a capas profundas de músculos para liberar tensión crónica y nudos efectivamente.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60-90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60-90 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div class="service-number">3</div>
+                <h3 class="en">Hot Stone Massage</h3>
+                <h3 class="es">Masaje con Piedras Calientes</h3>
+                <p class="en">Luxurious treatment using heated stones to melt away tension, improve circulation, and provide deep relaxation.</p>
+                <p class="es">Tratamiento de lujo usando piedras calientes para aliviar la tensión, mejorar la circulación y proporcionar relajación profunda.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 75 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 75 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div class="service-number">4</div>
+                <h3 class="en">Thai Massage</h3>
+                <h3 class="es">Masaje Tailandés</h3>
+                <p class="en">Ancient healing technique combining acupressure and stretching to improve flexibility and energy flow throughout the body.</p>
+                <p class="es">Técnica de curación antigua que combina acupresión y estiramientos para mejorar la flexibilidad y el flujo de energía corporal.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 90 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card">
+                <div class="service-number">5</div>
+                <h3 class="en">Sports Massage</h3>
+                <h3 class="es">Masaje Deportivo</h3>
+                <p class="en">Specialized treatment for athletes and active individuals to enhance performance, prevent injury, and speed recovery.</p>
+                <p class="es">Tratamiento especializado para atletas e individuos activos para mejorar el rendimiento, prevenir lesiones y acelerar la recuperación.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60-75 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60-75 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card">
+                <div class="service-number">6</div>
+                <h3 class="en">Reflexology</h3>
+                <h3 class="es">Reflexología</h3>
+                <p class="en">Therapeutic foot massage that stimulates pressure points to enhance health, reduce stress, and promote wellness throughout the body.</p>
+                <p class="es">Masaje terapéutico del pie que estimula puntos de presión para mejorar la salud, reducir el estrés y promover el bienestar general.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 7 -->
+            <div class="service-card">
+                <div class="service-number">7</div>
+                <h3 class="en">Aromatherapy Massage</h3>
+                <h3 class="es">Masaje de Aromaterapia</h3>
+                <p class="en">Relaxing massage enhanced with essential oils to provide emotional balance, stress relief, and enhanced relaxation experience.</p>
+                <p class="es">Masaje relajante mejorado con aceites esenciales para proporcionar equilibrio emocional, alivio del estrés y experiencia relajante mejorada.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 75 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 75 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 8 -->
+            <div class="service-card">
+                <div class="service-number">8</div>
+                <h3 class="en">Body Scrub & Polish</h3>
+                <h3 class="es">Exfoliación y Pulido Corporal</h3>
+                <p class="en">Luxurious exfoliating treatment that removes dead skin and leaves your body silky smooth and radiant.</p>
+                <p class="es">Tratamiento exfoliante de lujo que elimina la piel muerta y deja tu cuerpo suave y radiante.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 9 -->
+            <div class="service-card">
+                <div class="service-number">9</div>
+                <h3 class="en">Couples Massage</h3>
+                <h3 class="es">Masaje para Parejas</h3>
+                <p class="en">Romantic and relaxing experience where couples receive simultaneous massage treatments in a private, serene environment.</p>
+                <p class="es">Experiencia romántica y relajante donde las parejas reciben tratamientos de masaje simultáneo en un ambiente privado y sereno.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60-90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60-90 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="en">Contact Info</h4>
+                    <h4 class="es">Información de Contacto</h4>
+                    <p>909 E 156 Street</p>
+                    <p>Bronx, NY 10455</p>
+                    <p>📞 (646) 735-1099</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="en">Hours</h4>
+                    <h4 class="es">Horario</h4>
+                    <p class="en">Mon - Fri: 10AM - 8PM</p>
+                    <p class="es">Lun - Vie: 10AM - 8PM</p>
+                    <p class="en">Sat - Sun: 10AM - 6PM</p>
+                    <p class="es">Sáb - Dom: 10AM - 6PM</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="en">Quick Links</h4>
+                    <h4 class="es">Enlaces Rápidos</h4>
+                    <p><a href="index.html" class="en">Home</a><a href="index.html" class="es">Inicio</a></p>
+                    <p><a href="facial-cleaning.html" class="en">Facial Cleaning</a><a href="facial-cleaning.html" class="es">Limpieza Facial</a></p>
+                    <p><a href="facial-rejuvenations.html" class="en">Facial Rejuvenations</a><a href="facial-rejuvenations.html" class="es">Rejuvenecimiento</a></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="en">&copy; 2026 VP Beauty Aesthetics Place. All rights reserved. 100% Satisfaction Guarantee ✓</p>
+                <p class="es">&copy; 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados. 100% Garantía de Satisfacción ✓</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.en, .es').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('hidden');
+            });
+            
+            if (lang === 'en') {
+                document.querySelectorAll('.en').forEach(el => {
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="en"]').classList.add('active');
+                document.querySelector('[data-lang="es"]').classList.remove('active');
+            } else if (lang === 'es') {
+                document.querySelectorAll('.es').forEach(el => {
+                    el.classList.add('active');
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="es"]').classList.add('active');
+                document.querySelector('[data-lang="en"]').classList.remove('active');
+            }
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('preferredLanguage') || 'en';
+            switchLanguage(saved);
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                switchLanguage(this.dataset.lang);
+            });
+        });
+    </script>
+</body>
+</html>

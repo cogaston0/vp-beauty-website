@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facial Rejuvenations | Rejuvenecimiento Facial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #9b6b9e;
+            --secondary-color: #d4998f;
+            --accent-color: #8b6f47;
+            --light-bg: #f5f1ec;
+            --dark-text: #3a3a3a;
+            --light-text: #666666;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: linear-gradient(rgba(245, 241, 236, 0.92), rgba(245, 241, 236, 0.92)), url('bg-facial-rejuvenations.png') center/cover no-repeat fixed;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50px;
+            padding: 8px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .lang-btn.active {
+            background: #9b6b9e;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .es { display: none; }
+        .es.active { display: block; }
+        .en { display: block; }
+        .en.hidden { display: none; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        header a:hover {
+            opacity: 1;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .service-details {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .service-details strong {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(155, 107, 158, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">🇺🇸</button>
+        <button class="lang-btn" data-lang="es">🇪🇸</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="en">
+            <h1>VP Beauty Aesthetics Place</h1>
+            <p><a href="index.html">← Back to Home</a></p>
+        </div>
+        <div class="es">
+            <h1>Lugar de Estética de Belleza VP</h1>
+            <p><a href="index.html">← Volver al Inicio</a></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Page Title -->
+        <div class="page-title">
+            <div class="en">
+                <h2>Facial Rejuvenation Treatments</h2>
+                <p>Premium anti-aging and skin renewal treatments for a youthful, radiant complexion</p>
+            </div>
+            <div class="es">
+                <h2>Tratamientos de Rejuvenecimiento Facial</h2>
+                <p>Tratamientos premium anti-envejecimiento y renovación de piel para un cutis radiante y juvenil</p>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="service-grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="service-number">1</div>
+                <h3 class="en">Dermal Fillers</h3>
+                <h3 class="es">Rellenos Dérmicos</h3>
+                <p class="en">Non-surgical enhancement using premium fillers to restore volume and reduce deep lines and wrinkles naturally.</p>
+                <p class="es">Mejora no quirúrgica usando rellenos premium para restaurar volumen y reducir líneas profundas y arrugas naturalmente.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 45-60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 45-60 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div class="service-number">2</div>
+                <h3 class="en">Radiofrequency Therapy</h3>
+                <h3 class="es">Terapia de Radiofrecuencia</h3>
+                <p class="en">Advanced skin tightening treatment that stimulates collagen production for firmer, more youthful-looking skin.</p>
+                <p class="es">Tratamiento avanzado de tensión de piel que estimula la producción de colágeno para una piel más firme y juvenil.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div class="service-number">3</div>
+                <h3 class="en">PRP Therapy (Platelet-Rich Plasma)</h3>
+                <h3 class="es">Terapia PRP (Plasma Rico en Plaquetas)</h3>
+                <p class="en">Regenerative treatment using your own blood plasma to stimulate natural healing and collagen growth for radiant skin.</p>
+                <p class="es">Tratamiento regenerativo usando tu propio plasma sanguíneo para estimular la curación natural y el crecimiento de colágeno.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 75 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 75 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div class="service-number">4</div>
+                <h3 class="en">Microneedling</h3>
+                <h3 class="es">Microagujas</h3>
+                <p class="en">Minimally invasive treatment that creates controlled micro-injuries to trigger natural collagen and elastin production.</p>
+                <p class="es">Tratamiento mínimamente invasivo que crea microlesiones controladas para desencadenar la producción natural de colágeno y elastina.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card">
+                <div class="service-number">5</div>
+                <h3 class="en">Chemical Resurfacing</h3>
+                <h3 class="es">Resurfacing Químico</h3>
+                <p class="en">Intensive chemical peel that removes damaged layers and promotes new skin growth for dramatic rejuvenation results.</p>
+                <p class="es">Peeling químico intensivo que elimina capas dañadas y promueve el crecimiento de nueva piel para resultados dramáticos de rejuvenecimiento.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 90 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 90 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card">
+                <div class="service-number">6</div>
+                <h3 class="en">Facial Acupuncture</h3>
+                <h3 class="es">Acupuntura Facial</h3>
+                <p class="en">Ancient healing technique combined with modern aesthetics to improve circulation and natural glow while reducing wrinkles.</p>
+                <p class="es">Técnica de curación antigua combinada con estética moderna para mejorar la circulación y el brillo natural mientras se reducen las arrugas.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 7 -->
+            <div class="service-card">
+                <div class="service-number">7</div>
+                <h3 class="en">LED Light Therapy</h3>
+                <h3 class="es">Terapia de Luz LED</h3>
+                <p class="en">Non-invasive light therapy that reduces inflammation, stimulates collagen, and improves skin texture and tone.</p>
+                <p class="es">Terapia de luz no invasiva que reduce la inflamación, estimula el colágeno y mejora la textura y el tono de la piel.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 45 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 45 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+
+            <!-- Service 8 -->
+            <div class="service-card">
+                <div class="service-number">8</div>
+                <h3 class="en">Anti-Aging Facial Massage</h3>
+                <h3 class="es">Masaje Facial Anti-Envejecimiento</h3>
+                <p class="en">Therapeutic facial massage using specialized techniques to lift, tone, and rejuvenate facial muscles and skin.</p>
+                <p class="es">Masaje facial terapéutico usando técnicas especializadas para levantar, tonificar y rejuvenecer los músculos y la piel facial.</p>
+                <div class="service-details">
+                    <p class="en"><strong>Duration:</strong> 60 minutes</p>
+                    <p class="es"><strong>Duración:</strong> 60 minutos</p>
+                </div>
+                <a href="contact.html" class="cta-button en">Book Now</a>
+                <a href="contact.html" class="cta-button es">Reservar Ahora</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="en">Contact Info</h4>
+                    <h4 class="es">Información de Contacto</h4>
+                    <p>909 E 156 Street</p>
+                    <p>Bronx, NY 10455</p>
+                    <p>📞 (646) 735-1099</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="en">Hours</h4>
+                    <h4 class="es">Horario</h4>
+                    <p class="en">Mon - Fri: 10AM - 8PM</p>
+                    <p class="es">Lun - Vie: 10AM - 8PM</p>
+                    <p class="en">Sat - Sun: 10AM - 6PM</p>
+                    <p class="es">Sáb - Dom: 10AM - 6PM</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="en">Quick Links</h4>
+                    <h4 class="es">Enlaces Rápidos</h4>
+                    <p><a href="index.html" class="en">Home</a><a href="index.html" class="es">Inicio</a></p>
+                    <p><a href="facial-cleaning.html" class="en">Facial Cleaning</a><a href="facial-cleaning.html" class="es">Limpieza Facial</a></p>
+                    <p><a href="massages.html" class="en">Massages</a><a href="massages.html" class="es">Masajes</a></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="en">&copy; 2026 VP Beauty Aesthetics Place. All rights reserved. 100% Satisfaction Guarantee ✓</p>
+                <p class="es">&copy; 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados. 100% Garantía de Satisfacción ✓</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.en, .es').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('hidden');
+            });
+            
+            if (lang === 'en') {
+                document.querySelectorAll('.en').forEach(el => {
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="en"]').classList.add('active');
+                document.querySelector('[data-lang="es"]').classList.remove('active');
+            } else if (lang === 'es') {
+                document.querySelectorAll('.es').forEach(el => {
+                    el.classList.add('active');
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="es"]').classList.add('active');
+                document.querySelector('[data-lang="en"]').classList.remove('active');
+            }
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('preferredLanguage') || 'en';
+            switchLanguage(saved);
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                switchLanguage(this.dataset.lang);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Booking | Contacto y Reserva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #9b6b9e;
+            --secondary-color: #d4998f;
+            --accent-color: #8b6f47;
+            --light-bg: #f5f1ec;
+            --dark-text: #3a3a3a;
+            --light-text: #666666;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: linear-gradient(rgba(245, 241, 236, 0.92), rgba(245, 241, 236, 0.92)), url('bg-contact.png') center/cover no-repeat fixed;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50px;
+            padding: 8px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .lang-btn.active {
+            background: #9b6b9e;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .es { display: none; }
+        .es.active { display: block; }
+        .en { display: block; }
+        .en.hidden { display: none; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        header a:hover {
+            opacity: 1;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* Contact Container */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .info-section {
+            margin-bottom: 30px;
+        }
+
+        .info-section h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .info-section p {
+            color: var(--light-text);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .info-section a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(155, 107, 158, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(155, 107, 158, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">🇺🇸</button>
+        <button class="lang-btn" data-lang="es">🇪🇸</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="en">
+            <h1>VP Beauty Aesthetics Place</h1>
+            <p><a href="index.html">← Back to Home</a></p>
+        </div>
+        <div class="es">
+            <h1>Lugar de Estética de Belleza VP</h1>
+            <p><a href="index.html">← Volver al Inicio</a></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Page Title -->
+        <div class="page-title">
+            <div class="en">
+                <h2>Get in Touch</h2>
+            </div>
+            <div class="es">
+                <h2>Ponte en Contacto</h2>
+            </div>
+        </div>
+
+        <!-- Contact Wrapper -->
+        <div class="contact-wrapper">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="en">
+                    <h3>Contact Information</h3>
+                </div>
+                <div class="es">
+                    <h3>Información de Contacto</h3>
+                </div>
+
+                <div class="info-section">
+                    <h4 class="en">📍 Location</h4>
+                    <h4 class="es">📍 Ubicación</h4>
+                    <p>909 E 156 Street</p>
+                    <p>Bronx, NY 10455</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 class="en">📞 Phone</h4>
+                    <h4 class="es">📞 Teléfono</h4>
+                    <p><a href="tel:6467351099">(646) 735-1099</a></p>
+                </div>
+
+                <div class="info-section">
+                    <h4 class="en">⏰ Hours</h4>
+                    <h4 class="es">⏰ Horario</h4>
+                    <p class="en"><strong>Monday - Friday:</strong> 10AM - 8PM</p>
+                    <p class="es"><strong>Lunes - Viernes:</strong> 10AM - 8PM</p>
+                    <p class="en"><strong>Saturday - Sunday:</strong> 10AM - 6PM</p>
+                    <p class="es"><strong>Sábado - Domingo:</strong> 10AM - 6PM</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 class="en">✓ Services</h4>
+                    <h4 class="es">✓ Servicios</h4>
+                    <p class="en">
+                        ✨ Facial Cleaning<br>
+                        💎 Facial Rejuvenations<br>
+                        🧖 Massages & Wellness
+                    </p>
+                    <p class="es">
+                        ✨ Limpieza Facial<br>
+                        💎 Rejuvenecimiento Facial<br>
+                        🧖 Masajes y Bienestar
+                    </p>
+                </div>
+
+                <div class="info-section">
+                    <h4 class="en">💯 100% Satisfaction Guarantee</h4>
+                    <h4 class="es">💯 100% Garantía de Satisfacción</h4>
+                    <p class="en">Your satisfaction is our priority. We stand behind all our services with a complete guarantee.</p>
+                    <p class="es">Tu satisfacción es nuestra prioridad. Respaldamos todos nuestros servicios con una garantía completa.</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <div class="en">
+                    <h3>Book Your Appointment</h3>
+                </div>
+                <div class="es">
+                    <h3>Reserva tu Cita</h3>
+                </div>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="en">Name *</label>
+                        <label class="es">Nombre *</label>
+                        <input type="text" required placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="en">Email *</label>
+                        <label class="es">Correo Electrónico *</label>
+                        <input type="email" required placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="en">Phone *</label>
+                        <label class="es">Teléfono *</label>
+                        <input type="tel" required placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="en">Service Interested *</label>
+                        <label class="es">Servicio Interesado *</label>
+                        <select required>
+                            <option class="en" value="">Select a Service</option>
+                            <option class="en" value="facial-cleaning">Facial Cleaning</option>
+                            <option class="en" value="facial-rejuvenation">Facial Rejuvenations</option>
+                            <option class="en" value="massage">Massages & Wellness</option>
+                            
+                            <option class="es" value="">Selecciona un Servicio</option>
+                            <option class="es" value="facial-cleaning">Limpieza Facial</option>
+                            <option class="es" value="facial-rejuvenation">Rejuvenecimiento Facial</option>
+                            <option class="es" value="massage">Masajes y Bienestar</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="en">Preferred Date</label>
+                        <label class="es">Fecha Preferida</label>
+                        <input type="text" placeholder="MM/DD/YYYY">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="en">Message</label>
+                        <label class="es">Mensaje</label>
+                        <textarea placeholder=""></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn en">Send Appointment Request</button>
+                    <button type="submit" class="submit-btn es">Enviar Solicitud de Cita</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="en">Contact Info</h4>
+                    <h4 class="es">Información de Contacto</h4>
+                    <p>909 E 156 Street</p>
+                    <p>Bronx, NY 10455</p>
+                    <p>📞 (646) 735-1099</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="en">Hours</h4>
+                    <h4 class="es">Horario</h4>
+                    <p class="en">Mon - Fri: 10AM - 8PM</p>
+                    <p class="es">Lun - Vie: 10AM - 8PM</p>
+                    <p class="en">Sat - Sun: 10AM - 6PM</p>
+                    <p class="es">Sáb - Dom: 10AM - 6PM</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="en">Quick Links</h4>
+                    <h4 class="es">Enlaces Rápidos</h4>
+                    <p><a href="index.html" class="en">Home</a><a href="index.html" class="es">Inicio</a></p>
+                    <p><a href="facial-cleaning.html" class="en">Facial Cleaning</a><a href="facial-cleaning.html" class="es">Limpieza Facial</a></p>
+                    <p><a href="facial-rejuvenations.html" class="en">Facial Rejuvenations</a><a href="facial-rejuvenations.html" class="es">Rejuvenecimiento</a></p>
+                    <p><a href="massages.html" class="en">Massages</a><a href="massages.html" class="es">Masajes</a></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="en">&copy; 2026 VP Beauty Aesthetics Place. All rights reserved. 100% Satisfaction Guarantee ✓</p>
+                <p class="es">&copy; 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados. 100% Garantía de Satisfacción ✓</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.en, .es').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('hidden');
+            });
+            
+            if (lang === 'en') {
+                document.querySelectorAll('.en').forEach(el => {
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="en"]').classList.add('active');
+                document.querySelector('[data-lang="es"]').classList.remove('active');
+            } else if (lang === 'es') {
+                document.querySelectorAll('.es').forEach(el => {
+                    el.classList.add('active');
+                    el.classList.remove('hidden');
+                });
+                document.querySelector('[data-lang="es"]').classList.add('active');
+                document.querySelector('[data-lang="en"]').classList.remove('active');
+            }
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('preferredLanguage') || 'en';
+            switchLanguage(saved);
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                switchLanguage(this.dataset.lang);
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const lang = localStorage.getItem('preferredLanguage') || 'en';
+            const msg = lang === 'en' ? 'Thank you! We will contact you shortly.' : '¡Gracias! Nos pondremos en contacto pronto.';
+            alert(msg);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
