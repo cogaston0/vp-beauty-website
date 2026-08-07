@@ -244,6 +244,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Language Switcher -->
     <div class="language-switcher">
@@ -365,7 +366,7 @@
             document.querySelectorAll('.en, .es').forEach(el => {
                 el.classList.remove('active', 'hidden');
             });
-            
+
             if (lang === 'en') {
                 document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
                 document.querySelectorAll('.es').forEach(el => el.classList.add('hidden'));
@@ -377,10 +378,10 @@
                 document.querySelector('[data-lang="es"]').classList.add('active');
                 document.querySelector('[data-lang="en"]').classList.remove('active');
             }
-            
+
             localStorage.setItem('preferredLanguage', lang);
         }
-        
+
         window.addEventListener('load', function() {
             const saved = localStorage.getItem('preferredLanguage') || 'en';
             switchLanguage(saved);
@@ -393,5 +394,4 @@
         });
     </script>
 </body>
-<!-- Cache bust: rebuilt at UTC 2026-08-07 11:40 -->
 </html>
