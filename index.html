@@ -383,9 +383,8 @@
         }
 
         window.addEventListener('load', function() {
-            // On fresh load, default to English
-            const saved = localStorage.getItem('preferredLanguage') || 'en';
-            switchLanguage(saved);
+            // Homepage always starts in English
+            switchLanguage('en');
         });
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
