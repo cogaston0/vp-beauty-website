@@ -102,6 +102,38 @@
             opacity: 1;
         }
 
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 2px solid var(--primary-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
         /* Page Title */
         .page-title {
             text-align: center;
@@ -324,6 +356,17 @@
             <p><a href="index.html">← Volver al Inicio</a></p>
         </div>
     </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="en">Home</a><a href="index.html" class="es">Inicio</a></li>
+            <li><a href="facial-cleaning.html" class="en">Facial Cleaning</a><a href="facial-cleaning.html" class="es">Limpieza Facial</a></li>
+            <li><a href="facial-rejuvenations.html" class="en">Facial Rejuvenations</a><a href="facial-rejuvenations.html" class="es">Rejuvenecimiento</a></li>
+            <li><a href="massages.html" class="en">Massages</a><a href="massages.html" class="es">Masajes</a></li>
+            <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="es">Contacto</a></li>
+        </ul>
+    </nav>
 
     <div class="container">
         <!-- Page Title -->
