@@ -72,7 +72,7 @@
         }
 
         .es { display: none; }
-        .es.active { display: block; }
+        .es.active { display: revert; }
         .en { display: block; }
         .en.hidden { display: none; }
 
@@ -501,7 +501,7 @@
                 document.querySelectorAll(".en").forEach(el => el.classList.remove("hidden"));
                 document.querySelectorAll(".es").forEach(el => el.classList.add("hidden"));
             } else if (lang === "es") {
-                document.querySelectorAll(".es").forEach(el => el.classList.remove("hidden"));
+                document.querySelectorAll(".es").forEach(el => el.classList.add("active"));
                 document.querySelectorAll(".en").forEach(el => el.classList.add("hidden"));
             }
 
