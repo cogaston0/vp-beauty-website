@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Booking - VP Beauty Aesthetics</title>
+    <title data-en="Contact &amp; Booking - VP Beauty Aesthetics" data-es="Contacto y Reservas - Estética VP Beauty">Contact &amp; Booking - VP Beauty Aesthetics</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">VP Beauty Aesthetics</div>
+            <div class="logo" data-en="VP Beauty Aesthetics" data-es="Estética de Belleza VP">VP Beauty Aesthetics</div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
-                <li><a href="facial-rejuvenations.html">Facial Rejuvenations</a></li>
-                <li><a href="massages.html">Massages</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="index_spanish" data-en="Home" data-es="Inicio">Home</a></li>
+                <li><a href="facial-cleaning.html" data-en="Facial Cleaning" data-es="Limpieza Facial">Facial Cleaning</a></li>
+                <li><a href="facial-rejuvenations.html" data-en="Facial Rejuvenations" data-es="Rejuvenecimiento Facial">Facial Rejuvenations</a></li>
+                <li><a href="massages.html" data-en="Massages" data-es="Masajes">Massages</a></li>
+                <li><a href="contact.html" class="active" data-en="Contact" data-es="Contacto">Contact</a></li>
             </ul>
+            <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">ES</button>
         </div>
     </nav>
 
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Contact & Booking</h1>
-            <p>Get in touch with VP Beauty Aesthetics Place</p>
+            <h1 data-en="Contact &amp; Booking" data-es="Contacto y Reservas">Contact &amp; Booking</h1>
+            <p data-en="Get in touch with VP Beauty Aesthetics Place" data-es="Comunícate con Lugar de Estética de Belleza VP">Get in touch with VP Beauty Aesthetics Place</p>
         </div>
     </section>
 
@@ -35,102 +36,102 @@
             <div class="contact-content">
                 <!-- Contact Info -->
                 <div class="contact-info">
-                    <h2>Contact Information</h2>
+                    <h2 data-en="Contact Information" data-es="Información de Contacto">Contact Information</h2>
                     
                     <div class="info-box">
-                        <h3>📍 Address</h3>
-                        <p>940 E 163rd Street</p>
-                        <p>Bronx, NY 10459</p>
+                        <h3>📍 <span data-en="Address" data-es="Dirección">Address</span></h3>
+                        <p>909 E 156 St</p>
+                        <p>Bronx, NY 10455</p>
                     </div>
 
                     <div class="info-box">
-                        <h3>📞 Phone</h3>
+                        <h3>📞 <span data-en="Phone" data-es="Teléfono">Phone</span></h3>
                         <p><a href="tel:646-735-1099">(646) 735-1099</a></p>
-                        <p class="small-text">Call to book your appointment today!</p>
+                        <p class="small-text" data-en="Call to book your appointment today!" data-es="¡Llama hoy para reservar tu cita!">Call to book your appointment today!</p>
                     </div>
 
                     <div class="info-box">
-                        <h3>⏰ Hours of Operation</h3>
-                        <p><strong>Monday - Friday:</strong> 10:00 AM - 8:00 PM</p>
-                        <p><strong>Saturday - Sunday:</strong> 10:00 AM - 6:00 PM</p>
-                        <p class="small-text">By Appointment Only</p>
+                        <h3>⏰ <span data-en="Hours of Operation" data-es="Horario de Atención">Hours of Operation</span></h3>
+                        <p><strong data-en="Monday - Friday:" data-es="Lunes - Viernes:">Monday - Friday:</strong> 10:00 AM - 8:00 PM</p>
+                        <p><strong data-en="Saturday - Sunday:" data-es="Sábado - Domingo:">Saturday - Sunday:</strong> 10:00 AM - 6:00 PM</p>
+                        <p class="small-text" data-en="By Appointment Only" data-es="Solo por Cita Previa">By Appointment Only</p>
                     </div>
 
                     <div class="info-box">
-                        <h3>✨ Special Offer</h3>
-                        <p class="offer-text">30% OFF Your First Visit</p>
-                        <p class="small-text">New clients receive this exclusive discount</p>
+                        <h3>✨ <span data-en="Special Offer" data-es="Oferta Especial">Special Offer</span></h3>
+                        <p class="offer-text" data-en="30% OFF Your First Visit" data-es="30% DE DESCUENTO en tu Primera Visita">30% OFF Your First Visit</p>
+                        <p class="small-text" data-en="New clients receive this exclusive discount" data-es="Los nuevos clientes reciben este descuento exclusivo">New clients receive this exclusive discount</p>
                     </div>
 
                     <div class="info-box guarantee">
-                        <h3>✓ Our Guarantee</h3>
-                        <p>100% Satisfaction Guaranteed</p>
-                        <p class="small-text">We stand behind every service with our complete satisfaction guarantee</p>
+                        <h3>✓ <span data-en="Our Guarantee" data-es="Nuestra Garantía">Our Guarantee</span></h3>
+                        <p data-en="100% Satisfaction Guaranteed" data-es="Satisfacción 100% Garantizada">100% Satisfaction Guaranteed</p>
+                        <p class="small-text" data-en="We stand behind every service with our complete satisfaction guarantee" data-es="Respaldamos cada servicio con nuestra garantía total de satisfacción">We stand behind every service with our complete satisfaction guarantee</p>
                     </div>
                 </div>
 
                 <!-- Booking Form -->
                 <div class="booking-form-container">
-                    <h2>Quick Booking</h2>
+                    <h2 data-en="Quick Booking" data-es="Reserva Rápida">Quick Booking</h2>
                     <form class="booking-form">
                         <div class="form-group">
-                            <label for="name">Full Name *</label>
+                            <label for="name" data-en="Full Name *" data-es="Nombre Completo *">Full Name *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
+                            <label for="email" data-en="Email Address *" data-es="Correo Electrónico *">Email Address *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="phone">Phone Number *</label>
+                            <label for="phone" data-en="Phone Number *" data-es="Número de Teléfono *">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="service">Service Interested In *</label>
+                            <label for="service" data-en="Service Interested In *" data-es="Servicio de Interés *">Service Interested In *</label>
                             <select id="service" name="service" required>
-                                <option value="">Select a Service</option>
-                                <optgroup label="Facial Cleaning">
-                                    <option>Cleaning + Vitamin Crashes (Dehydration)</option>
-                                    <option>Cleaning + Micro-Dermabrasion + Caviar Mask</option>
-                                    <option>Cleaning + Peeling Chemistry Desaminant</option>
-                                    <option>Cleaning + Enzymatic Peeling</option>
-                                    <option>Cleaning + Glycolic Peeling 3%</option>
-                                    <option>Cleaning + Professional Makeup</option>
+                                <option value="" data-en="Select a Service" data-es="Selecciona un Servicio">Select a Service</option>
+                                <optgroup data-en="Facial Cleaning" data-es="Limpieza Facial" label="Facial Cleaning">
+                                    <option data-en="Cleaning + Vitamin Crashes (Dehydration)" data-es="Limpieza + Vitaminas (Deshidratación)">Cleaning + Vitamin Crashes (Dehydration)</option>
+                                    <option data-en="Cleaning + Micro-Dermabrasion + Caviar Mask" data-es="Limpieza + Microdermoabrasión + Mascarilla de Caviar">Cleaning + Micro-Dermabrasion + Caviar Mask</option>
+                                    <option data-en="Cleaning + Peeling Chemistry Desaminant" data-es="Limpieza + Peeling Químico Desaminante">Cleaning + Peeling Chemistry Desaminant</option>
+                                    <option data-en="Cleaning + Enzymatic Peeling" data-es="Limpieza + Peeling Enzimático">Cleaning + Enzymatic Peeling</option>
+                                    <option data-en="Cleaning + Glycolic Peeling 3%" data-es="Limpieza + Peeling Glicólico 3%">Cleaning + Glycolic Peeling 3%</option>
+                                    <option data-en="Cleaning + Professional Makeup" data-es="Limpieza + Maquillaje Profesional">Cleaning + Professional Makeup</option>
                                 </optgroup>
-                                <optgroup label="Facial Rejuvenations">
-                                    <option>Nasolabial Fillers (Hyaluronic Acid)</option>
-                                    <option>Facelift with Demae Stretch</option>
-                                    <option>Baby Face Expression Line Remover</option>
-                                    <option>PRP Platelet</option>
-                                    <option>Toxin Rich Plasma Botulinum (Botox)</option>
-                                    <option>Bipolarized Radiofrequency</option>
-                                    <option>Cavitation Biostimulation</option>
-                                    <option>Facial Chocolate Therapy</option>
+                                <optgroup data-en="Facial Rejuvenations" data-es="Rejuvenecimiento Facial" label="Facial Rejuvenations">
+                                    <option data-en="Nasolabial Fillers (Hyaluronic Acid)" data-es="Rellenos Nasolabiales (Ácido Hialurónico)">Nasolabial Fillers (Hyaluronic Acid)</option>
+                                    <option data-en="Facelift with Demae Stretch" data-es="Lifting Facial con Demae Stretch">Facelift with Demae Stretch</option>
+                                    <option data-en="Baby Face Expression Line Remover" data-es="Eliminador de Líneas de Expresión Baby Face">Baby Face Expression Line Remover</option>
+                                    <option data-en="PRP Platelet" data-es="PRP Plaquetas">PRP Platelet</option>
+                                    <option data-en="Toxin Rich Plasma Botulinum (Botox)" data-es="Toxina Botulínica (Botox)">Toxin Rich Plasma Botulinum (Botox)</option>
+                                    <option data-en="Bipolarized Radiofrequency" data-es="Radiofrecuencia Bipolarizada">Bipolarized Radiofrequency</option>
+                                    <option data-en="Cavitation Biostimulation" data-es="Bioestimulación por Cavitación">Cavitation Biostimulation</option>
+                                    <option data-en="Facial Chocolate Therapy" data-es="Terapia Facial de Chocolate">Facial Chocolate Therapy</option>
                                 </optgroup>
-                                <optgroup label="Massages & Body Treatments">
-                                    <option>Hot Stone Massages</option>
-                                    <option>Ultracavitation Body</option>
-                                    <option>Wood Massage</option>
-                                    <option>Body Mesotherapy</option>
-                                    <option>Reducing Massages</option>
-                                    <option>Mesotherapy Injections (ALIDYA)</option>
-                                    <option>Postoperative Massages</option>
-                                    <option>Waxing Services</option>
-                                    <option>Collageno Applied and More</option>
+                                <optgroup data-en="Massages &amp; Body Treatments" data-es="Masajes y Tratamientos Corporales" label="Massages &amp; Body Treatments">
+                                    <option data-en="Hot Stone Massages" data-es="Masajes con Piedras Calientes">Hot Stone Massages</option>
+                                    <option data-en="Ultracavitation Body" data-es="Ultracavitación Corporal">Ultracavitation Body</option>
+                                    <option data-en="Wood Massage" data-es="Masaje con Madera">Wood Massage</option>
+                                    <option data-en="Body Mesotherapy" data-es="Mesoterapia Corporal">Body Mesotherapy</option>
+                                    <option data-en="Reducing Massages" data-es="Masajes Reductores">Reducing Massages</option>
+                                    <option data-en="Mesotherapy Injections (ALIDYA)" data-es="Inyecciones de Mesoterapia (ALIDYA)">Mesotherapy Injections (ALIDYA)</option>
+                                    <option data-en="Postoperative Massages" data-es="Masajes Postoperatorios">Postoperative Massages</option>
+                                    <option data-en="Waxing Services" data-es="Servicios de Depilación con Cera">Waxing Services</option>
+                                    <option data-en="Collageno Applied and More" data-es="Colágeno Aplicado y Más">Collageno Applied and More</option>
                                 </optgroup>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Message or Special Requests</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your skincare goals or any special needs..."></textarea>
+                            <label for="message" data-en="Message or Special Requests" data-es="Mensaje o Solicitudes Especiales">Message or Special Requests</label>
+                            <textarea id="message" name="message" rows="4" data-en-placeholder="Tell us about your skincare goals or any special needs..." data-es-placeholder="Cuéntanos sobre tus objetivos de cuidado de la piel o cualquier necesidad especial..." placeholder="Tell us about your skincare goals or any special needs..."></textarea>
                         </div>
 
-                        <button type="submit" class="submit-btn">Request Appointment</button>
-                        <p class="form-note">* Required fields. We'll contact you shortly to confirm your appointment.</p>
+                        <button type="submit" class="submit-btn" data-en="Request Appointment" data-es="Solicitar Cita">Request Appointment</button>
+                        <p class="form-note" data-en="* Required fields. We'll contact you shortly to confirm your appointment." data-es="* Campos requeridos. Te contactaremos en breve para confirmar tu cita.">* Required fields. We'll contact you shortly to confirm your appointment.</p>
                     </form>
                 </div>
             </div>
@@ -140,11 +141,10 @@
     <!-- Map Section -->
     <section class="map-section">
         <div class="container">
-            <h2>Visit Us</h2>
-            <p>Located in the Heart of the Bronx</p>
-            <!-- Embed Google Map -->
+            <h2 data-en="Visit Us" data-es="Visítanos">Visit Us</h2>
+            <p data-en="Located in the Heart of the Bronx" data-es="Ubicados en el Corazón del Bronx">Located in the Heart of the Bronx</p>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.1234567890!2d-73.9252!3d40.8207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f3e7e7e7e7e7%3A0x1234567890abcdef!2s940%20E%20163rd%20St%2C%20Bronx%2C%20NY%2010459!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.1234567890!2d-73.9252!3d40.8207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f3e7e7e7e7e7%3A0x1234567890abcdef!2s909%20E%20156%20St%2C%20Bronx%2C%20NY%2010455!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -154,40 +154,75 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>940 E 163rd Street</p>
-                    <p>Bronx, NY 10459</p>
+                    <h4 data-en="Contact Info" data-es="Información de Contacto">Contact Info</h4>
+                    <p>909 E 156 St</p>
+                    <p>Bronx, NY 10455</p>
                     <p>📞 (646) 735-1099</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Hours</h4>
-                    <p>Mon - Fri: 10AM - 8PM</p>
-                    <p>Sat - Sun: 10AM - 6PM</p>
-                    <p>By Appointment Only</p>
+                    <h4 data-en="Hours" data-es="Horario">Hours</h4>
+                    <p data-en="Mon - Fri: 10AM - 8PM" data-es="Lun - Vie: 10AM - 8PM">Mon - Fri: 10AM - 8PM</p>
+                    <p data-en="Sat - Sun: 10AM - 6PM" data-es="Sab - Dom: 10AM - 6PM">Sat - Sun: 10AM - 6PM</p>
+                    <p data-en="By Appointment Only" data-es="Solo por Cita Previa">By Appointment Only</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Services</h4>
+                    <h4 data-en="Services" data-es="Servicios">Services</h4>
                     <ul>
-                        <li><a href="facial-cleaning.html">Facial Cleaning</a></li>
-                        <li><a href="facial-rejuvenations.html">Facial Rejuvenations</a></li>
-                        <li><a href="massages.html">Massages</a></li>
+                        <li><a href="facial-cleaning.html" data-en="Facial Cleaning" data-es="Limpieza Facial">Facial Cleaning</a></li>
+                        <li><a href="facial-rejuvenations.html" data-en="Facial Rejuvenations" data-es="Rejuvenecimiento Facial">Facial Rejuvenations</a></li>
+                        <li><a href="massages.html" data-en="Massages" data-es="Masajes">Massages</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 VP Beauty Aesthetics Place. All rights reserved.</p>
-                <p>100% Satisfaction Guaranteed ✓</p>
+                <p data-en="© 2026 VP Beauty Aesthetics Place. All rights reserved." data-es="© 2026 Lugar de Estética de Belleza VP. Todos los derechos reservados.">© 2026 VP Beauty Aesthetics Place. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Handle form submission
+        var currentLang = localStorage.getItem('vpLang') || 'en';
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.getElementById('langToggle').textContent = lang === 'en' ? 'ES' : 'EN';
+
+            var titleEl = document.querySelector('title');
+            if (titleEl && titleEl.dataset[lang]) {
+                document.title = titleEl.dataset[lang];
+            }
+
+            document.querySelectorAll('[data-en][data-es]:not(title)').forEach(function(el) {
+                if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'OPTION' || el.tagName === 'LABEL') {
+                    el.textContent = el.dataset[lang];
+                } else if (el.tagName === 'OPTGROUP') {
+                    el.label = el.dataset[lang];
+                } else if (el.tagName === 'TEXTAREA') {
+                    el.placeholder = el.dataset[lang + 'Placeholder'] || el.placeholder;
+                } else {
+                    el.innerHTML = el.dataset[lang];
+                }
+            });
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            localStorage.setItem('vpLang', currentLang);
+            applyLanguage(currentLang);
+        }
+
         document.querySelector('.booking-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your interest! We will contact you shortly to confirm your appointment.\n\nOr call us directly at (646) 735-1099');
+            var msg = currentLang === 'es'
+                ? '¡Gracias por tu interés! Te contactaremos en breve para confirmar tu cita.\n\nO llámanos directamente al (646) 735-1099'
+                : 'Thank you for your interest! We will contact you shortly to confirm your appointment.\n\nOr call us directly at (646) 735-1099';
+            alert(msg);
             this.reset();
         });
+
+        if (currentLang !== 'en') {
+            applyLanguage(currentLang);
+        }
     </script>
 </body>
 </html>

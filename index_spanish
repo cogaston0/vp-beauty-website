@@ -105,23 +105,34 @@
     </footer>
 
     <script>
-        var currentLang = 'es';
+        var currentLang = localStorage.getItem('vpLang') || 'es';
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
+
+            var titleEl = document.querySelector('title');
+            if (titleEl && titleEl.dataset[lang]) {
+                document.title = titleEl.dataset[lang];
+            }
+
+            document.querySelectorAll('[data-es][data-en]:not(title)').forEach(function(el) {
+                if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+                    el.textContent = el.dataset[lang];
+                } else {
+                    el.innerHTML = el.dataset[lang];
+                }
+            });
+        }
 
         function toggleLanguage() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
-            document.documentElement.lang = currentLang;
-            document.getElementById('langToggle').textContent = currentLang === 'es' ? 'EN' : 'ES';
+            localStorage.setItem('vpLang', currentLang);
+            applyLanguage(currentLang);
+        }
 
-            // Update document title
-            var titleEl = document.querySelector('title');
-            if (titleEl && titleEl.dataset[currentLang]) {
-                document.title = titleEl.dataset[currentLang];
-            }
-
-            // Update all translatable elements (excluding <title>)
-            document.querySelectorAll('[data-es][data-en]:not(title)').forEach(function(el) {
-                el.textContent = el.dataset[currentLang];
-            });
+        if (currentLang !== 'es') {
+            applyLanguage(currentLang);
         }
     </script>
 </body>
