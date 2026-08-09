@@ -443,29 +443,32 @@
                     <h3>Reserva tu Cita</h3>
                 </div>
 
-                <form id="contactForm">
+                <form id="contactForm" action="https://formsubmit.co/franciabaezdegomez7@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Forever Young Appointment Request">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
                     <div class="form-group">
                         <label class="en">Name *</label>
                         <label class="es">Nombre *</label>
-                        <input type="text" required placeholder="">
+                        <input type="text" name="Customer Name" required placeholder="">
                     </div>
 
                     <div class="form-group">
                         <label class="en">Email *</label>
                         <label class="es">Correo Electrónico *</label>
-                        <input type="email" required placeholder="">
+                        <input type="email" name="Customer Email" required placeholder="">
                     </div>
 
                     <div class="form-group">
                         <label class="en">Phone *</label>
                         <label class="es">Teléfono *</label>
-                        <input type="tel" required placeholder="">
+                        <input type="tel" name="Customer Phone" required placeholder="">
                     </div>
 
                     <div class="form-group">
                         <label class="en">Service Interested *</label>
                         <label class="es">Servicio Interesado *</label>
-                        <select required>
+                        <select name="Requested Service" required>
                             <option class="en" value="">Select a Service</option>
                             <option class="en" value="facial-cleaning">Facial Cleaning</option>
                             <option class="en" value="facial-rejuvenation">Facial Rejuvenations</option>
@@ -481,13 +484,13 @@
                     <div class="form-group">
                         <label class="en">Preferred Date</label>
                         <label class="es">Fecha Preferida</label>
-                        <input type="text" placeholder="MM/DD/YYYY">
+                        <input type="text" name="Preferred Date" placeholder="MM/DD/YYYY">
                     </div>
 
                     <div class="form-group">
                         <label class="en">Message</label>
                         <label class="es">Mensaje</label>
-                        <textarea placeholder=""></textarea>
+                        <textarea name="Message" placeholder=""></textarea>
                     </div>
 
                     <button type="submit" class="submit-btn en">Send Appointment Request</button>
