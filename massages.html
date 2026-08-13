@@ -81,9 +81,41 @@
         header {
             background: #FE82AC;
             color: white;
-            padding: 30px 0;
+            padding: 30px 0 92px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
             margin-bottom: 30px;
+        }
+
+        header::before {
+            content: "❧  ❧  ❧  ❧  ❧  ❧  ❧  ❧  ❧  ❧  ❧  ❧  ❧  ❧  ❧";
+            position: absolute;
+            left: 50%;
+            bottom: 34px;
+            width: 1400px;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.92);
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            line-height: 1;
+            letter-spacing: 0.35rem;
+            white-space: nowrap;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 38px;
+            border-top: 3px double rgba(255, 255, 255, 0.95);
+            border-bottom: 3px double rgba(255, 255, 255, 0.95);
+            background:
+                repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0 2px, transparent 2px 7px),
+                linear-gradient(to bottom, transparent 0 8px, rgba(255, 255, 255, 0.92) 8px 10px, transparent 10px 27px, rgba(255, 255, 255, 0.92) 27px 29px, transparent 29px);
+            opacity: 0.9;
         }
 
         header h1 {
