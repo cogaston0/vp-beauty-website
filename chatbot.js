@@ -87,11 +87,30 @@
   const current = () => text[getLang()];
 
   const detectQuestionLanguage = (input) => {
-    const q = input.toLowerCase();
-    const spanishWords = /[¿¡áéíóúñ]|\b(que|qué|como|cómo|tengo|tiene|piel|alergia|producto|productos|cita|horario|ubicación|telefono|teléfono|servicio|masaje|facial|puedo|usan|utilizan|recomienda|recomiendan)\b/;
-    const englishWords = /\b(what|how|where|when|have|skin|allergy|product|products|appointment|hours|location|phone|service|massage|facial|can|use|recommend)\b/;
-    if (spanishWords.test(q)) return 'es';
-    if (englishWords.test(q)) return 'en';
+    const q = input.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const words = q.match(/[a-zñ]+/g) || [];
+    const spanish = new Set([
+      'a','al','algo','algun','alguna','antes','aqui','bien','cada','como','con','cual','cuando',
+      'de','del','donde','el','ella','en','es','esa','ese','esta','este','esto','gracias','hay',
+      'la','las','le','lo','los','me','mi','mis','muy','necesito','no','para','pero','por','porque',
+      'puede','puedo','que','quiero','se','si','sin','son','su','sus','te','tengo','tiene','tu',
+      'un','una','usan','usted','ustedes','y','yo','piel','alergia','producto','productos','cita',
+      'horario','ubicacion','telefono','servicio','servicios','masaje','facial','recomienda'
+    ]);
+    const english = new Set([
+      'a','about','allergy','am','and','appointment','are','at','before','book','can','do','does',
+      'for','from','have','help','hours','how','i','in','is','it','location','massage','me','my',
+      'need','of','on','or','phone','product','products','recommend','service','services','skin',
+      'the','they','this','to','use','what','when','where','which','with','you','your'
+    ]);
+    let spanishScore = /[¿¡ñ]/.test(input.toLowerCase()) ? 3 : 0;
+    let englishScore = 0;
+    words.forEach(word => {
+      if (spanish.has(word)) spanishScore += 1;
+      if (english.has(word)) englishScore += 1;
+    });
+    if (spanishScore > englishScore) return 'es';
+    if (englishScore > spanishScore) return 'en';
     return getLang();
   };
 
