@@ -86,6 +86,15 @@
   const getLang = () => localStorage.getItem('preferredLanguage') === 'es' ? 'es' : 'en';
   const current = () => text[getLang()];
 
+  const detectQuestionLanguage = (input) => {
+    const q = input.toLowerCase();
+    const spanishWords = /[¿¡áéíóúñ]|\b(que|qué|como|cómo|tengo|tiene|piel|alergia|producto|productos|cita|horario|ubicación|telefono|teléfono|servicio|masaje|facial|puedo|usan|utilizan|recomienda|recomiendan)\b/;
+    const englishWords = /\b(what|how|where|when|have|skin|allergy|product|products|appointment|hours|location|phone|service|massage|facial|can|use|recommend)\b/;
+    if (spanishWords.test(q)) return 'es';
+    if (englishWords.test(q)) return 'en';
+    return getLang();
+  };
+
   const answerKey = (input) => {
     const q = input.toLowerCase();
     if (/alerg|allerg|reaction|reacci|rash|sarpull|itch|picor|sensitive skin|piel sensible/.test(q)) return 'allergy';
@@ -132,7 +141,8 @@
 
     const respond = (question) => {
       addMessage(question, 'user');
-      const langText = current();
+      const responseLanguage = detectQuestionLanguage(question);
+      const langText = text[responseLanguage];
       window.setTimeout(() => addMessage(langText[answerKey(question)], 'bot'), 250);
     };
 
