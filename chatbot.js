@@ -12,7 +12,7 @@
       send: 'Send',
       open: 'Open chat',
       close: 'Close chat',
-      questions: ['Services', 'Book an appointment', 'Hours', 'Location', 'Phone'],
+      questions: ['Services', 'Skin allergies', 'Products used', 'Book an appointment', 'Hours'],
       fallback: `I can help with services, appointments, hours, location, and phone information. You can also call <a href="${PHONE_LINK}">${PHONE_DISPLAY}</a>.`,
       services: 'Forever Young offers facial cleaning, facial rejuvenation, massages, and wellness treatments. Which service interests you?',
       booking: 'You can request an appointment through our booking form. <a href="contact.html">Book an appointment</a> or call <a href="' + PHONE_LINK + '">' + PHONE_DISPLAY + '</a>.',
@@ -21,6 +21,8 @@
       phone: 'Call us at <a href="' + PHONE_LINK + '">' + PHONE_DISPLAY + '</a>.',
       facial: 'We offer professional facial cleaning and rejuvenation treatments. Visit the facial service pages for details, then request your appointment.',
       massage: 'We offer Swedish, deep tissue, hot stone, Thai, sports, aromatherapy, couples massage, reflexology, and body treatments.',
+      allergy: 'If you have a known skin allergy, please tell us the allergen, affected products, and any previous reaction before your treatment. We recommend avoiding the suspected ingredient and having the specialist review every product before it touches your skin. A patch test may be appropriate, but it does not guarantee that a reaction will not occur. If you currently have swelling, trouble breathing, blistering, or a severe reaction, seek urgent medical care instead of receiving a cosmetic treatment.',
+      products: 'Products vary by procedure and may include cleanser, exfoliant or enzyme peel, toner, serum, facial mask, moisturizer, massage cream or oil, and sunscreen. Before treatment, ask the specialist to show you the exact brand and ingredient list. Tell us about allergies, sensitive skin, ingredients you avoid, and previous reactions. We will not invent or promise a specific brand here.',
     },
     es: {
       title: 'Asistente de Forever Young',
@@ -31,7 +33,7 @@
       send: 'Enviar',
       open: 'Abrir chat',
       close: 'Cerrar chat',
-      questions: ['Servicios', 'Reservar una cita', 'Horario', 'Ubicación', 'Teléfono'],
+      questions: ['Servicios', 'Alergias de la piel', 'Productos utilizados', 'Reservar una cita', 'Horario'],
       fallback: `Puedo ayudarte con servicios, citas, horario, ubicación y teléfono. También puedes llamar al <a href="${PHONE_LINK}">${PHONE_DISPLAY}</a>.`,
       services: 'Forever Young ofrece limpieza facial, rejuvenecimiento facial, masajes y tratamientos de bienestar. ¿Qué servicio te interesa?',
       booking: 'Puedes solicitar una cita mediante nuestro formulario. <a href="contact.html">Reservar una cita</a> o llama al <a href="' + PHONE_LINK + '">' + PHONE_DISPLAY + '</a>.',
@@ -40,6 +42,8 @@
       phone: 'Llámanos al <a href="' + PHONE_LINK + '">' + PHONE_DISPLAY + '</a>.',
       facial: 'Ofrecemos limpieza facial profesional y tratamientos de rejuvenecimiento. Visita las páginas de servicios faciales y luego solicita tu cita.',
       massage: 'Ofrecemos masaje sueco, tejido profundo, piedras calientes, tailandés, deportivo, aromaterapia, masaje para parejas, reflexología y tratamientos corporales.',
+      allergy: 'Si tienes una alergia conocida en la piel, dinos el alérgeno, los productos relacionados y cualquier reacción anterior antes del tratamiento. Recomendamos evitar el ingrediente sospechoso y pedir que la especialista revise cada producto antes de aplicarlo. Una prueba de parche puede ser apropiada, pero no garantiza que no ocurrirá una reacción. Si actualmente tienes hinchazón, dificultad para respirar, ampollas o una reacción grave, busca atención médica urgente en vez de recibir un tratamiento cosmético.',
+      products: 'Los productos dependen del procedimiento y pueden incluir limpiador, exfoliante o peeling enzimático, tónico, suero, mascarilla, hidratante, crema o aceite de masaje y protector solar. Antes del tratamiento, pide ver la marca exacta y la lista de ingredientes. Infórmanos sobre alergias, piel sensible, ingredientes que evitas y reacciones anteriores. Aquí no inventaremos ni prometeremos una marca específica.',
     },
   };
 
@@ -84,6 +88,8 @@
 
   const answerKey = (input) => {
     const q = input.toLowerCase();
+    if (/alerg|allerg|reaction|reacci|rash|sarpull|itch|picor|sensitive skin|piel sensible/.test(q)) return 'allergy';
+    if (/producto|product|ingredient|ingrediente|brand|marca|cream|crema|serum|suero|mask|mascarilla|oil|aceite/.test(q)) return 'products';
     if (/cita|reserv|book|appointment|schedule/.test(q)) return 'booking';
     if (/hora|horario|open|close|hours|time/.test(q)) return 'hours';
     if (/ubic|direc|address|location|where/.test(q)) return 'location';
