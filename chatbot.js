@@ -47,6 +47,35 @@
     },
   };
 
+  const AI_ENDPOINT = 'https://facesmart-proxy.facesmart.workers.dev';
+  const AI_MODEL = 'claude-opus-4-8';
+  const BUSINESS_CONTEXT = `You are the bilingual website assistant for Forever Young, a facial, spa, massage, and wellness business at 909 E 156 Street, Bronx, NY 10455. Phone: (646) 735-1099. Hours: Monday-Friday 10AM-8PM; Saturday-Sunday 10AM-6PM; by appointment.
+
+Answer naturally in the same language the customer used. If the customer writes Spanish, answer entirely in clear Spanish. If the customer writes English, answer entirely in English. Understand spelling mistakes, voice-transcription errors, regional Spanish, and mixed-language product words such as alergia, loción/lotion, perfume, fragancia, crema, aceite, canela, vela, roca, algodón, microfibra, and synthetic.
+
+Forever Young offers facial cleaning, facial rejuvenation, massage, and wellness services. Do not invent exact brands, ingredients, towel materials, prices, medical diagnoses, or business practices that have not been confirmed. Explain common possibilities, then clearly say the specialist must confirm the exact product or material before treatment. For allergy or sensitive-skin questions, advise the customer to disclose known allergens and previous reactions, review ingredient labels with the specialist, avoid suspected triggers, and consider whether a patch test is appropriate. A patch test cannot guarantee no reaction. For swelling, breathing difficulty, blistering, or a severe active reaction, advise urgent medical care rather than a cosmetic treatment. Keep answers friendly, useful, and concise.`;
+
+  async function getAIResponse(question, responseLanguage) {
+    const languageInstruction = responseLanguage === 'es'
+      ? 'Responde únicamente en español.'
+      : 'Respond only in English.';
+    const response = await fetch(AI_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: AI_MODEL,
+        max_tokens: 500,
+        system: BUSINESS_CONTEXT + '\n\n' + languageInstruction,
+        messages: [{ role: 'user', content: question }],
+      }),
+    });
+    if (!response.ok) throw new Error('AI service unavailable');
+    const data = await response.json();
+    const answer = data?.content?.find(item => item.type === 'text')?.text?.trim();
+    if (!answer) throw new Error('Empty AI response');
+    return answer;
+  }
+
   const style = document.createElement('style');
   style.textContent = `
     .fy-chat-launcher{position:fixed;right:22px;bottom:22px;z-index:3000;width:62px;height:62px;border:0;border-radius:50%;background:#FE82AC;color:#fff;font-size:27px;cursor:pointer;box-shadow:0 6px 24px rgba(70,35,60,.28);transition:transform .2s}
@@ -158,11 +187,23 @@
       messages.scrollTop = messages.scrollHeight;
     };
 
-    const respond = (question) => {
+    const respond = async (question) => {
       addMessage(question, 'user');
       const responseLanguage = detectQuestionLanguage(question);
       const langText = text[responseLanguage];
-      window.setTimeout(() => addMessage(langText[answerKey(question)], 'bot'), 250);
+      const typing = document.createElement('div');
+      typing.className = 'fy-message bot';
+      typing.textContent = responseLanguage === 'es' ? 'Escribiendo…' : 'Typing…';
+      messages.appendChild(typing);
+      messages.scrollTop = messages.scrollHeight;
+      try {
+        const answer = await getAIResponse(question, responseLanguage);
+        typing.remove();
+        addMessage(answer, 'bot');
+      } catch (error) {
+        typing.remove();
+        addMessage(langText[answerKey(question)], 'bot');
+      }
     };
 
     panel.querySelectorAll('.fy-quick button').forEach(button => {
