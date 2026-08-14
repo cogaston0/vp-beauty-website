@@ -65,8 +65,10 @@ Forever Young offers facial cleaning, facial rejuvenation, massage, and wellness
       body: JSON.stringify({
         model: AI_MODEL,
         max_tokens: 500,
-        system: BUSINESS_CONTEXT + '\n\n' + languageInstruction,
-        messages: [{ role: 'user', content: question }],
+        messages: [{
+          role: 'user',
+          content: BUSINESS_CONTEXT + '\n\n' + languageInstruction + '\n\nCustomer question: ' + question,
+        }],
       }),
     });
     if (!response.ok) throw new Error('AI service unavailable');
